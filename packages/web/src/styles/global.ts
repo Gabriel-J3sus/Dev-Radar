@@ -9,11 +9,11 @@ export default createGlobalStyle`
 
   body {
     background: ${props => props.theme.colors.bg};
-    color: ${props => props.theme.colors.primary};
   }
 
   body, input, button, textarea {
     font: 400 1rem 'Roboto', sans-serif;
+    color: ${props => props.theme.colors.primary};
   }
 
   a, button {

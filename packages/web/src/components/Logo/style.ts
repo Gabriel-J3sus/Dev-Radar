@@ -20,3 +20,17 @@ export const LogoContainer = styled.div`
     }
   }
 `
+
+export const LogoSVG = styled.svg<{ SVGfill: string }>`
+  width: 4.18rem;
+  height: 4.18rem;
+
+  path {
+    fill: ${({ SVGfill, ...props }) => props.theme.colors[SVGfill]};
+  }
+
+  @media (min-width: 550px) {
+    width: 5.43rem;
+    height: 5.43rem;
+  }
+`

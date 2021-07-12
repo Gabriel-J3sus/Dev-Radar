@@ -16,7 +16,14 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@api/*": ["./src/pages/api/*"]
+    }
   },
   "include": [
     "next-env.d.ts",

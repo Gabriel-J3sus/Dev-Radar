@@ -1,5 +1,4 @@
-import styled, { DefaultTheme } from 'styled-components'
-import { LogoContainer } from './style'
+import { LogoContainer, LogoSVG } from './style'
 
 interface LogoProps {
   title?: string
@@ -23,17 +22,3 @@ export const Logo: React.FC<LogoProps> = ({ SVGfill, title }) => {
     </LogoContainer>
   )
 }
-
-const LogoSVG = styled.svg<{ SVGfill: string }>`
-  width: 4.18rem;
-  height: 4.18rem;
-
-  path {
-    fill: ${({ SVGfill, ...props }) => props.theme.colors[SVGfill]};
-  }
-
-  @media (min-width: 550px) {
-    width: 5.43rem;
-    height: 5.43rem;
-  }
-`
