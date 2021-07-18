@@ -28,6 +28,15 @@ export default createGlobalStyle`
     border: none;
   }
 
+  &::-webkit-scrollbar {
+    width: 0.4rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${props => props.theme.colors.secondary};
+    border-radius: 25px;
+  }
+
   @media (max-width: 1080px) {
     html {
       font-size: 93.75%; //15px

@@ -23,7 +23,6 @@ export const AuthTemplateContainer = styled.div`
     }
 
     > form {
-      max-height: 500px;
       max-width: 350px;
       width: 100%;
       height: auto;
@@ -43,39 +42,23 @@ export const AuthTemplateContainer = styled.div`
         line-height: 23px;
       }
 
-      .input-wrapper {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        gap: 1.8rem;
-      }
-
-      .input-container {
-        width: 100%;
+      .local-inputs {
         display: flex;
         flex-direction: column;
-        position: relative;
+        align-items: center;
+        gap: 0.5rem;
 
-        label {
-          font-weight: 700;
-          color: ${props => props.theme.colors.tertiary};
-          margin-bottom: 0.3rem;
+        .input-wrapper {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          gap: 1.8rem;
         }
 
-        input {
-          width: 100%;
-          border: none;
-          border-bottom: 2px solid ${props => props.theme.colors.border};
-          color: ${props => props.theme.colors.primary};
-
-          padding: 0.3rem 0.5rem;
-          box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.02);
-          outline: none;
-          transition: border-bottom-color 0.3s ease-out;
-
-          &:focus {
-            border-bottom-color: ${props => props.theme.colors.secondary};
-          }
+        p {
+          font-size: 0.75rem;
+          font-weight: 500;
+          color: ${props => props.theme.colors.secondary};
         }
       }
 
@@ -87,6 +70,7 @@ export const AuthTemplateContainer = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-shrink: 0;
 
         background: ${props => props.theme.colors.secondary};
         color: ${props => props.theme.colors.bgForm};
@@ -99,28 +83,11 @@ export const AuthTemplateContainer = styled.div`
         }
       }
 
-      .iconButton {
-        width: auto;
-        height: auto;
-        font-size: 0;
-        background: none;
-
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        margin: 0.3rem 0.5rem 0 0;
-
-        transition: opacity 0.2s;
-
-        &:hover {
-          opacity: 0.8;
-        }
-      }
-
       .link {
         font-size: 0.9rem;
         font-weight: 500;
         color: ${props => props.theme.colors.detail};
+        text-align: center;
 
         > a {
           color: ${props => props.theme.colors.secondary};
@@ -136,7 +103,7 @@ export const AuthTemplateContainer = styled.div`
   }
 
   aside {
-    max-height: 100vh;
+    max-width: 100vw;
     min-height: 100vh;
     height: 100%;
     overflow-y: auto;
@@ -172,18 +139,4 @@ export const AuthTemplateContainer = styled.div`
       }
     }
   }
-`
-
-export const EyeClosedIcon = styled(AiFillEyeInvisible)`
-  width: 1.5rem;
-  height: 1.5rem;
-  flex-shrink: 0;
-  fill: ${props => props.theme.colors.primary};
-`
-
-export const EyeOpenIcon = styled(AiFillEye)`
-  width: 1.5rem;
-  height: 1.5rem;
-  flex-shrink: 0;
-  fill: ${props => props.theme.colors.primary};
 `
