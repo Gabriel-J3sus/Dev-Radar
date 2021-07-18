@@ -1,7 +1,7 @@
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import styled from 'styled-components'
 
-export const FormInputContainer = styled.span`
+export const FormInputContainer = styled.span<{ inputType: string }>`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -19,7 +19,10 @@ export const FormInputContainer = styled.span`
     border-bottom: 2px solid ${props => props.theme.colors.border};
     color: ${props => props.theme.colors.primary};
 
-    padding: 0.3rem 0.5rem;
+    padding: ${props =>
+      props.inputType === 'password'
+        ? '0.3rem 2.5rem 0.3rem 0.5rem'
+        : '0.3rem 0.5rem'};
     box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.02);
     outline: none;
     transition: border-bottom-color 0.3s ease-out;

@@ -3,14 +3,17 @@ import { ThemeProvider } from 'styled-components'
 
 import GlobalStyle from '../styles/global'
 import { light } from '@styles/themes/light'
+import { AuthContextProvider } from 'src/contexts/AuthContext'
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
-    <ThemeProvider theme={light}>
-      <GlobalStyle />
+    <AuthContextProvider>
+      <ThemeProvider theme={light}>
+        <GlobalStyle />
 
-      <Component {...pageProps} />
-    </ThemeProvider>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </AuthContextProvider>
   )
 }
 

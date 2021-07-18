@@ -1,13 +1,33 @@
-import React from 'react'
+import React, { FormEvent, useRef } from 'react'
 
 import { AuthTemplate } from '@components/AuthPageTemplate'
 import { Container } from '@styles/pages/signin'
 import { Card } from '@components/Card'
+import { useAuth } from 'src/hooks/useAuth'
 
 const SignIn: React.FC = () => {
+  const { signIn } = useAuth()
+
+  const emailInputRef = useRef<HTMLInputElement>(null)
+  const passwordInputRef = useRef<HTMLInputElement>(null)
+
+  async function handleSignIn(event: FormEvent) {
+    event.preventDefault()
+
+    await signIn({
+      email: emailInputRef.current?.value,
+      password: passwordInputRef.current?.value
+    })
+  }
+
   return (
     <Container>
-      <AuthTemplate title="Logar">
+      <AuthTemplate
+        title="Logar"
+        formAction={handleSignIn}
+        emailInputRef={emailInputRef}
+        passwordInputRef={passwordInputRef}
+      >
         <Card
           avatar="https://github.com/Gabriel-J3sus.png"
           name="Gabriel Jesus"

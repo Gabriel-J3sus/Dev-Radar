@@ -1,17 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, forwardRef, InputHTMLAttributes } from 'react'
 
 import { EyeClosedIcon, EyeOpenIcon, FormInputContainer } from './styles'
 
-interface FormInputProps {
+interface FormInputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string
-  inputType: 'email' | 'text' | 'password'
+  inputType: 'email' | 'text' | 'password' | 'number'
 }
 
-export const FormInput: React.FC<FormInputProps> = ({ label, inputType }) => {
+const FormInput: React.ForwardRefRenderFunction<
+  HTMLInputElement,
+  FormInputProps
+> = ({ label, inputType, ...rest }, ref) => {
   const [isPasswordShown, setIsPasswordShown] = useState(false)
 
   return (
-    <FormInputContainer className="input-container">
+    <FormInputContainer className="input-container" inputType={inputType}>
       <label>{label}</label>
       <input
         type={
@@ -22,6 +25,8 @@ export const FormInput: React.FC<FormInputProps> = ({ label, inputType }) => {
             : inputType
         }
         required
+        ref={ref}
+        {...rest}
       />
 
       {inputType === 'password' && (
@@ -36,3 +41,5 @@ export const FormInput: React.FC<FormInputProps> = ({ label, inputType }) => {
     </FormInputContainer>
   )
 }
+
+export default forwardRef(FormInput)

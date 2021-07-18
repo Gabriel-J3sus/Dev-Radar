@@ -1,21 +1,25 @@
-import React, { useState } from 'react'
+import React, { FormEvent, useRef, useState } from 'react'
 import Link from 'next/link'
 
 import { Logo } from '@components/Logo'
 
 import { AuthTemplateContainer } from './style'
-import { FormInput } from '@components/FormInput'
+import FormInput from '@components/FormInput'
 
 interface AuthTemplateProps {
   title: 'Logar'
+  emailInputRef?: React.MutableRefObject<HTMLInputElement>
+  passwordInputRef?: React.MutableRefObject<HTMLInputElement>
+  formAction(event: FormEvent): Promise<void>
 }
 
 export const AuthTemplate: React.FC<AuthTemplateProps> = ({
   title,
+  emailInputRef,
+  passwordInputRef,
+  formAction,
   children
 }) => {
-  const [isPasswordShown, setIsPasswordShown] = useState(false)
-
   return (
     <AuthTemplateContainer>
       <main>
@@ -23,43 +27,16 @@ export const AuthTemplate: React.FC<AuthTemplateProps> = ({
 
         <p>Encontre amigos e desenvolvedores, em um só lugar.</p>
 
-        <form>
+        <form onSubmit={formAction}>
           <h2>{title}</h2>
 
-          {/* {formType === 'Register' && (
-            <span className="input-container">
-              <label>Name</label>
-              <input type="text" required />
-            </span>
-          )} */}
-          <FormInput label="Email" inputType="email" />
+          <FormInput label="Email" inputType="email" ref={emailInputRef} />
 
-          {/* {formType === 'Register' && (
-            <span className="input-container">
-              <label>Tecnologias</label>
-              <input type="text" required />
-            </span>
-          )} */}
-
-          {/* {formType === 'Register' && (
-            <div className="local-inputs">
-              <div className="input-wrapper">
-                <span className="input-container">
-                  <label>Latitude</label>
-                  <input type="text" required />
-                </span>
-
-                <span className="input-container">
-                  <label>Longitude</label>
-                  <input type="text" required />
-                </span>
-              </div>
-
-              <p>Clique no mapa ou permita acesso a sua localização.</p>
-            </div>
-          )} */}
-
-          <FormInput label="Senha" inputType="password" />
+          <FormInput
+            label="Senha"
+            inputType="password"
+            ref={passwordInputRef}
+          />
 
           <button type="submit">Entrar</button>
 

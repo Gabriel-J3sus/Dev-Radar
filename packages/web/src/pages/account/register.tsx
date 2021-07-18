@@ -1,26 +1,26 @@
-import React, { FormEvent, useEffect, useState, useRef } from 'react'
+import React, { FormEvent, useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 import { Container } from '@styles/pages/register'
 import { Logo } from '@components/Logo'
 import Link from 'next/link'
-import { FormInput } from '@components/FormInput'
+import FormInput from '@components/FormInput'
+import { useAuth } from 'src/hooks/useAuth'
 
 const Register: React.FC = ({ children }) => {
-  const formData = useRef({
-    name: '',
-    email: '',
-    technologies: '',
-    latitude: 0,
-    longitude: 0,
-    password: ''
-  })
+  const { register } = useAuth();
+
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [technologies, setTechnologies] = useState('')
+  const [githubURL, setGithubURL] = useState('')
   const [latitude, setLatitude] = useState(0)
   const [longitude, setLongitude] = useState(0)
+  const [password, setPassword] = useState('')
 
   const MapWithoutSSR = dynamic(() => import('@components/Map'), { ssr: false })
 
-  function handleSubmit() {
-    console.log('okkssssk')
+  async function handleSubmit() {
+    await register({name, email, technologies, githubURL, latitude, longitude, password})
   }
 
   useEffect(() => {
@@ -51,22 +51,61 @@ const Register: React.FC = ({ children }) => {
           </span>
           <Stepper submitFunction={() => handleSubmit()}>
             <div className="step-container">
-              <FormInput label="Nome" inputType="text" />
-              <FormInput label="Email" inputType="email" />
-              <FormInput label="Tecnologias" inputType="text" />
+              <FormInput
+                label="Nome"
+                inputType="text"
+                value={name}
+                onChange={event => setName(event.target.value)}
+              />
+              <FormInput
+                label="Email"
+                inputType="email"
+                value={email}
+                onChange={event => setEmail(event.target.value)}
+              />
+            </div>
+
+            <div className="step-container">
+              <FormInput
+                label="Tecnologias"
+                inputType="text"
+                value={technologies}
+                onChange={event => setTechnologies(event.target.value)}
+              />
+              <FormInput
+                label="Link do Github"
+                inputType="text"
+                value={githubURL}
+                onChange={event => setGithubURL(event.target.value)}
+              />
             </div>
 
             <div className="step-container local-inputs">
               <div className="input-wrapper">
-                <FormInput label="Latitude" inputType="text" />
+                <FormInput
+                  label="Latitude"
+                  inputType="number"
+                  value={latitude}
+                  onChange={event => setLatitude(Number(event.target.value))}
+                />
 
-                <FormInput label="Longitude" inputType="text" />
+                <FormInput
+                  label="Longitude"
+                  inputType="number"
+                  value={longitude}
+                  onChange={event => setLongitude(Number(event.target.value))}
+                />
               </div>
 
               <p>Clique no mapa ou permita acesso a sua localização.</p>
             </div>
             <div className="step-container">
-              <FormInput label="Senha" inputType="password" />
+              <FormInput
+                label="Senha"
+                inputType="password"
+                value={password}
+                onChange={event => setPassword(event.target.value)}
+              />
             </div>
           </Stepper>
         </main>
