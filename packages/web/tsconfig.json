@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "lib": [
       "dom",
       "dom.iterable",
@@ -22,7 +22,8 @@
       "@components/*": ["./src/components/*"],
       "@styles/*": ["./src/styles/*"],
       "@pages/*": ["./src/pages/*"],
-      "@api/*": ["./src/pages/api/*"]
+      "@api/*": ["./src/pages/api/*"],
+      "@utils/*": ["./src/utils/*"],
     }
   },
   "include": [

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const LogoContainer = styled.div`
+export const LogoContainer = styled.div<{ titleColor?: string }>`
   width: min-content;
   height: min-content;
 
@@ -12,7 +12,7 @@ export const LogoContainer = styled.div`
     font-family: 'Nunito', 'Roboto', sans-serif;
     font-size: 2.25rem;
     line-height: 42px;
-    color: ${props => props.theme.colors.title};
+    color: ${({ titleColor, ...props }) => props.theme.colors[titleColor]};
 
     @media (min-width: 600px) {
       font-size: 3rem;

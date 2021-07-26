@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect, useState } from 'react'
+import React, { FormEvent, useEffect, useState, useMemo } from 'react'
 import dynamic from 'next/dynamic'
 import { Container } from '@styles/pages/register'
 import { Logo } from '@components/Logo'
@@ -7,20 +7,33 @@ import FormInput from '@components/FormInput'
 import { useAuth } from 'src/hooks/useAuth'
 
 const Register: React.FC = ({ children }) => {
-  const { register } = useAuth();
+  const { register } = useAuth()
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [technologies, setTechnologies] = useState('')
   const [githubURL, setGithubURL] = useState('')
-  const [latitude, setLatitude] = useState(0)
-  const [longitude, setLongitude] = useState(0)
+  const [latitude, setLatitude] = useState<string | number>(0)
+  const [longitude, setLongitude] = useState<string | number>(0)
   const [password, setPassword] = useState('')
+
+  const coordenates: [number, number] = useMemo(() => {
+    console.log('ddddd')
+    return [Number(latitude), Number(longitude)]
+  }, [latitude, longitude])
 
   const MapWithoutSSR = dynamic(() => import('@components/Map'), { ssr: false })
 
   async function handleSubmit() {
-    await register({name, email, technologies, githubURL, latitude, longitude, password})
+    await register({
+      name,
+      email,
+      technologies,
+      githubURL,
+      latitude: Number(latitude),
+      longitude: Number(longitude),
+      password
+    })
   }
 
   useEffect(() => {
@@ -84,16 +97,16 @@ const Register: React.FC = ({ children }) => {
               <div className="input-wrapper">
                 <FormInput
                   label="Latitude"
-                  inputType="number"
+                  inputType="text"
                   value={latitude}
-                  onChange={event => setLatitude(Number(event.target.value))}
+                  onChange={event => setLatitude(event.target.value)}
                 />
 
                 <FormInput
                   label="Longitude"
-                  inputType="number"
+                  inputType="text"
                   value={longitude}
-                  onChange={event => setLongitude(Number(event.target.value))}
+                  onChange={event => setLongitude(event.target.value)}
                 />
               </div>
 
@@ -111,7 +124,7 @@ const Register: React.FC = ({ children }) => {
         </main>
 
         <aside>
-          <MapWithoutSSR coordinates={[latitude, longitude]} />
+          <MapWithoutSSR coordinates={coordenates} />
         </aside>
       </div>
     </Container>
