@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const SideBarContainer = styled.aside`
-  position: fixed;
   max-width: 380px;
   height: 100%;
   padding: 1.5rem 1.5rem 3.125rem;
@@ -10,9 +9,8 @@ export const SideBarContainer = styled.aside`
   flex-direction: column;
   justify-content: space-between;
 
-  z-index: 99;
-
   background: ${props => props.theme.colors.bg};
+  box-shadow: -2px -1px 20px 0px ${props => props.theme.colors.secondary};
 
   > aside {
     display: flex;

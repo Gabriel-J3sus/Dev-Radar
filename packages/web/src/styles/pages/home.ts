@@ -1,13 +1,11 @@
 import styled from 'styled-components'
 
 export const HomeContainer = styled.section`
-  max-width: 100vw;
-  max-height: 100vh;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
 
   display: flex;
-  flex-direction: column;
+  position: relative;
 
   .user-content {
     width: 100%;
@@ -39,12 +37,51 @@ export const HomeContainer = styled.section`
     }
   }
 
-  .map-container {
-    max-width: 100vw;
+  .leaflet-container {
+    z-index: 5;
+  }
+
+  > .card-container {
+    max-width: 320px;
     width: 100%;
-    height: 100%;
 
     position: absolute;
-    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    margin: 0 2.75rem 3.12rem 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 2.25rem;
+
+    input {
+      width: 100%;
+      padding: 0.8rem 0.9rem;
+
+      border: 2px solid transparent;
+      border-radius: 20px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      background: ${props => props.theme.colors.bgForm};
+      outline: none;
+      transition: border-color 0.2s ease-in-out;
+
+      &:focus {
+        border-color: ${props => props.theme.colors.secondary};
+      }
+    }
+
+    > .content {
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+
+      display: flex;
+      flex-direction: column;
+      gap: 1.625rem;
+      padding: 0.6rem 0.3rem 0.6rem 0;
+    }
   }
 `

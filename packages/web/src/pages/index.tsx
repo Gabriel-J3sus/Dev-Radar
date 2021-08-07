@@ -46,8 +46,22 @@ const Home: React.FC = () => {
         </div>
       </SideBar>
 
-      <main className="map-container">
-        <MapWithoutSSR coordinates={[latitude, longitude]} />
+
+      <MapWithoutSSR coordinates={[latitude, longitude]} />
+
+
+      <main className="card-container">
+        <div className="content">
+          <Card
+            avatar="https://github.com/Gabriel-J3sus.png"
+            description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum qui corporis delectus aperiam corrupti laudantium sequi eius neque iusto? Maxime in temporibus"
+            githubLink="#"
+            name="Gabriel Jesus"
+            technologies="ReactJS"
+          />
+        </div>
+
+        <input type="text" placeholder="Pesquisar por tecnologia..." />
       </main>
     </HomeContainer>
   )
