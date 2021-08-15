@@ -1,9 +1,10 @@
 import Leaflet from 'leaflet'
 
-// import mapMarkerImg from '../../public/logo.png'
+export const mapIcon = (userImg: string) =>
+  Leaflet.icon({
+    iconUrl: userImg,
 
-// export const mapIcon = Leaflet.icon({
-//   iconUrl: mapMarkerImg,
-
-//   iconSize: [60, 60]
-// })
+    iconSize: [45, 45],
+    iconAnchor: [0, 0],
+    popupAnchor: [20, 0]
+  })

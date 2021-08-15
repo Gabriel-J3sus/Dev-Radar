@@ -5,24 +5,40 @@ import { Logo } from '@components/Logo'
 import Link from 'next/link'
 import FormInput from '@components/FormInput'
 import { useAuth } from 'src/hooks/useAuth'
+import { SelectValuesButton } from '@components/SelectValuesButton'
+import { technologiesData } from '@data/technologies'
 
 const Register: React.FC = ({ children }) => {
   const { register } = useAuth()
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
-  const [technologies, setTechnologies] = useState('')
+  const [technologies, setTechnologies] = useState<number[]>([])
   const [githubURL, setGithubURL] = useState('')
-  const [latitude, setLatitude] = useState<string | number>(0)
-  const [longitude, setLongitude] = useState<string | number>(0)
+  const [latitude, setLatitude] = useState<number>(0)
+  const [longitude, setLongitude] = useState<number>(0)
   const [password, setPassword] = useState('')
 
-  const coordenates: [number, number] = useMemo(() => {
-    console.log('ddddd')
-    return [Number(latitude), Number(longitude)]
-  }, [latitude, longitude])
+  const coordenates: Record<'latitude' | 'longitude', number> = {
+    latitude,
+    longitude
+  }
 
-  const MapWithoutSSR = dynamic(() => import('@components/Map'), { ssr: false })
+  const MapWithoutSSR = useMemo(
+    () => dynamic(() => import('@components/Map'), { ssr: false }),
+    [latitude, longitude]
+  )
+
+  function addOrRemoveTech(id: number) {
+    if (technologies.find(e => e === id)) {
+      const position = technologies.indexOf(id)
+      technologies.splice(position, 1)
+
+      setTechnologies([...technologies])
+    } else {
+      setTechnologies([...technologies, id])
+    }
+  }
 
   async function handleSubmit() {
     await register({
@@ -30,8 +46,8 @@ const Register: React.FC = ({ children }) => {
       email,
       technologies,
       githubURL,
-      latitude: Number(latitude),
-      longitude: Number(longitude),
+      latitude: latitude,
+      longitude: longitude,
       password
     })
   }
@@ -58,7 +74,7 @@ const Register: React.FC = ({ children }) => {
       <div className="wrapper">
         <main>
           <span>
-            <Logo SVGfill="logo" title="DevFinder" />
+            <Logo SVGfill="logo" size="4.18rem" title="DevFinder" />
 
             <p>Crie uma conta e encontre parceiros, em um só lugar.</p>
           </span>
@@ -78,41 +94,46 @@ const Register: React.FC = ({ children }) => {
               />
             </div>
 
-            <div className="step-container">
-              <FormInput
-                label="Tecnologias"
-                inputType="text"
-                value={technologies}
-                onChange={event => setTechnologies(event.target.value)}
-              />
-              <FormInput
-                label="Link do Github"
-                inputType="text"
-                value={githubURL}
-                onChange={event => setGithubURL(event.target.value)}
-              />
+            <div className="step-container techs">
+              {technologiesData.map(({ id, value }) => (
+                <SelectValuesButton
+                  key={id}
+                  id={id}
+                  addOrRemove={() => addOrRemoveTech(id)}
+                  data={technologies}
+                >
+                  {value}
+                </SelectValuesButton>
+              ))}
             </div>
 
             <div className="step-container local-inputs">
               <div className="input-wrapper">
                 <FormInput
                   label="Latitude"
-                  inputType="text"
+                  inputType="number"
                   value={latitude}
-                  onChange={event => setLatitude(event.target.value)}
+                  onChange={event => setLatitude(Number(event.target.value))}
                 />
 
                 <FormInput
                   label="Longitude"
-                  inputType="text"
+                  inputType="number"
                   value={longitude}
-                  onChange={event => setLongitude(event.target.value)}
+                  onChange={event => setLongitude(Number(event.target.value))}
                 />
               </div>
 
               <p>Clique no mapa ou permita acesso a sua localização.</p>
             </div>
             <div className="step-container">
+              <FormInput
+                label="Link do Github"
+                inputType="text"
+                value={githubURL}
+                onChange={event => setGithubURL(event.target.value)}
+              />
+
               <FormInput
                 label="Senha"
                 inputType="password"

@@ -35,6 +35,7 @@
 
     "no-use-before-define": 0,
     "no-unused-expressions": 0,
+    "prefer-const": 0,
     "multiline-ternary": 0,
     "@typescript-eslint/no-unused-vars": 0
   }

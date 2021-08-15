@@ -1,11 +1,9 @@
 import styled from 'styled-components'
-import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai'
 
 export const AuthTemplateContainer = styled.div`
   max-width: 1044px;
   width: 100%;
   display: flex;
-  justify-content: center;
   gap: 2.25rem;
 
   main {
@@ -107,16 +105,22 @@ export const AuthTemplateContainer = styled.div`
     min-height: 100vh;
     height: 100%;
     overflow-y: auto;
-    display: none;
 
     .grid-content {
       height: 100%;
       width: 100%;
       display: grid;
-      grid-template-columns: repeat(1, 1fr);
       grid-gap: 1.25rem;
 
       padding: 0 0.4rem 1rem;
+
+      @media (max-width: 920px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+      @media (min-width: 920px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     &::-webkit-scrollbar {
@@ -124,19 +128,19 @@ export const AuthTemplateContainer = styled.div`
     }
   }
 
-  @media (min-width: 720px) {
+  @media (max-width: 720px) {
+    justify-content: center;
+
+    aside {
+      display: none;
+    }
+  }
+
+  @media (min-width: 721px) {
     justify-content: flex-start;
 
     aside {
       display: block;
-    }
-  }
-
-  @media (min-width: 920px) {
-    aside {
-      .grid-content {
-        grid-template-columns: repeat(2, 1fr);
-      }
     }
   }
 `

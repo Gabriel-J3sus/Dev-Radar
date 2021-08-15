@@ -11,7 +11,7 @@ export default createGlobalStyle`
     background: ${props => props.theme.colors.bg};
   }
 
-  body, input, button, textarea {
+  body, input, button, textarea, .leaflet-container {
     font: 400 1rem 'Roboto', sans-serif;
     color: ${props => props.theme.colors.primary};
   }
@@ -33,7 +33,7 @@ export default createGlobalStyle`
   }
 
   &::-webkit-scrollbar-thumb {
-    background: ${props => props.theme.colors.secondary};
+    background: ${props => props.theme.colors.logo};
     border-radius: 25px;
   }
 
@@ -46,6 +46,15 @@ export default createGlobalStyle`
     html {
       font-size: 87.5%; //14px
     }
+  }
+
+  .leaflet-marker-icon {
+    border-radius: 50%;
+    box-shadow: 0 0 20px 1px ${props => props.theme.colors.secondary};
+  }
+
+  .leaflet-popup-content p {
+    margin: 0;
   }
 
 `

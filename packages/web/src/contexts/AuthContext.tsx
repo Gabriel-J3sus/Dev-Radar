@@ -7,7 +7,7 @@ interface SignInProps {
 
 interface CreateUserProps extends SignInProps {
   name: string
-  technologies: string
+  technologies: number[]
   githubURL: string
   latitude: number
   longitude: number

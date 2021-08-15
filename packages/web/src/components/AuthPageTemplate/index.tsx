@@ -23,7 +23,7 @@ export const AuthTemplate: React.FC<AuthTemplateProps> = ({
   return (
     <AuthTemplateContainer>
       <main>
-        <Logo SVGfill="logo" title="DevFinder" />
+        <Logo SVGfill="logo" size="4.18rem" title="DevFinder" />
 
         <p>Encontre amigos e desenvolvedores, em um só lugar.</p>
 

@@ -78,6 +78,13 @@ export const Container = styled.section`
           flex-direction: column;
           align-items: center;
           gap: 0.5rem;
+
+          &.techs {
+            overflow: scroll;
+            flex-direction: row;
+            flex-wrap: wrap;
+            padding-right: 0.2rem;
+          }
         }
 
         .local-inputs {
@@ -165,6 +172,14 @@ export const Container = styled.section`
             }
           }
         }
+
+        @media (max-width: 720px) {
+          max-height: 450px;
+        }
+
+        @media (min-width: 721px) {
+          max-height: 400px;
+        }
       }
     }
 
@@ -205,7 +220,7 @@ export const Container = styled.section`
           gap: 0.75rem;
 
           > .step-container {
-            gap: 0.75rem;
+            gap: 0.5rem;
           }
 
           .input-wrapper {
@@ -226,6 +241,12 @@ export const Container = styled.section`
       aside {
         position: initial;
       }
+    }
+  }
+
+  @media (max-width: 380px) {
+    .leaflet-control-container {
+      display: none;
     }
   }
 `

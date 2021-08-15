@@ -24,6 +24,7 @@
       "@pages/*": ["./src/pages/*"],
       "@api/*": ["./src/pages/api/*"],
       "@utils/*": ["./src/utils/*"],
+      "@data/*": ["./src/data/*"]
     }
   },
   "include": [
