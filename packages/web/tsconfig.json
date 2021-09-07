@@ -19,12 +19,14 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["./src/components/*"],
-      "@styles/*": ["./src/styles/*"],
+      "@contexts/*": ["./src/client/contexts/*"],
+      "@hooks/*": ["./src/client/hooks/*"],
+      "@components/*": ["./src/client/components/*"],
+      "@styles/*": ["./src/client/styles/*"],
       "@pages/*": ["./src/pages/*"],
       "@api/*": ["./src/pages/api/*"],
       "@utils/*": ["./src/utils/*"],
-      "@data/*": ["./src/data/*"]
+      "@data/*": ["./src/data/*"],
     }
   },
   "include": [

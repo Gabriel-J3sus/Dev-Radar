@@ -5,8 +5,7 @@ import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import 'leaflet-defaulticon-compatibility'
 
 import { mapIcon } from '@utils/mapIcon'
-import { Card } from '@components/Card'
-import { MapPopup } from '@components/MapPopup'
+import { MapPopup } from '@components/ui'
 
 interface MapProps {
   coordinates: Record<'latitude' | 'longitude', number>

@@ -6,12 +6,13 @@ export const SelectValuesButtonContainer = styled.div`
     height: 100%;
     padding: 0.3rem 0.6rem;
     border-radius: 20px;
-    border: 2px solid ${props => props.theme.colors.detail};
+    border: 2px solid var(--detail);
     background: transparent;
+    font-size: 0.9rem;
   }
 
   .active {
-    border: 2px solid ${props => props.theme.colors.secondary};
-    color: ${props => props.theme.colors.secondary};
+    border: 2px solid var(--secondary);
+    color: var(--secondary);
   }
 `

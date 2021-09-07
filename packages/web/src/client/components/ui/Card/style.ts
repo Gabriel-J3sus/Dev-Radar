@@ -6,7 +6,7 @@ export const CardContainer = styled.div`
   gap: 0.625rem;
 
   padding: 1.25rem;
-  background: ${props => props.theme.colors.bgForm};
+  background: var(--bgForm);
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   border-radius: 10px;
   transition: transform 0.3s;
@@ -28,12 +28,12 @@ export const CardContainer = styled.div`
 
       strong {
         font-family: 'Nunito', 'Roboto', sans-serif;
-        color: ${props => props.theme.colors.title};
+        color: var(--title);
       }
 
       p {
         font-size: 0.8rem;
-        color: ${props => props.theme.colors.detail};
+        color: var(--detail);
       }
     }
   }
@@ -48,7 +48,7 @@ export const CardContainer = styled.div`
   }
 
   a {
-    color: ${props => props.theme.colors.secondary};
+    color: var(--secondary);
     transition: opacity 0.2s;
 
     &:hover {

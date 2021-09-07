@@ -21,7 +21,7 @@ export const HeaderContainer = styled.header`
     align-items: center;
     justify-content: center;
 
-    background: ${props => props.theme.colors.secondary};
+    background: var(--secondary);
     opacity: 0.7;
     border-radius: 15px;
     transition: opacity 0.3s;

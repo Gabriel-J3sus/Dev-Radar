@@ -61,13 +61,13 @@ export const Container = styled.section`
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 0.5rem;
+        gap: 1rem;
 
-        background: ${props => props.theme.colors.bgForm};
+        background: var(--bgForm);
         border-radius: 15px;
 
         > h2 {
-          color: ${props => props.theme.colors.title};
+          color: var(--title);
           line-height: 23px;
         }
 
@@ -80,10 +80,14 @@ export const Container = styled.section`
           gap: 0.5rem;
 
           &.techs {
-            overflow: scroll;
+            overflow: auto;
             flex-direction: row;
             flex-wrap: wrap;
             padding-right: 0.2rem;
+
+            &::-webkit-scrollbar {
+              width: 0.15rem;
+            }
           }
         }
 
@@ -104,7 +108,7 @@ export const Container = styled.section`
           p {
             font-size: 0.75rem;
             font-weight: 500;
-            color: ${props => props.theme.colors.secondary};
+            color: var(--secondary);
             text-align: center;
           }
         }
@@ -125,7 +129,7 @@ export const Container = styled.section`
             justify-content: center;
 
             background: #bdbdbd;
-            color: ${props => props.theme.colors.bgForm};
+            color: var(--bgForm);
             font-weight: 700;
 
             border-radius: 7px;
@@ -143,15 +147,19 @@ export const Container = styled.section`
             align-items: center;
             justify-content: center;
 
-            background: ${props => props.theme.colors.secondary};
-            color: ${props => props.theme.colors.bgForm};
+            background: var(--secondary);
+            color: var(--bgForm);
             font-weight: 700;
 
             border-radius: 7px;
-            transition: filter 0.3s;
+            transition: filter transform 0.3s;
 
             &:hover {
               filter: brightness(0.8);
+            }
+
+            &:active {
+              transform: scale(1.02);
             }
           }
         }
@@ -159,11 +167,11 @@ export const Container = styled.section`
         .link {
           font-size: 0.9rem;
           font-weight: 500;
-          color: ${props => props.theme.colors.detail};
+          color: var(--detail);
           text-align: center;
 
           > a {
-            color: ${props => props.theme.colors.secondary};
+            color: var(--secondary);
             text-decoration: underline;
             transition: opacity 0.2s;
 

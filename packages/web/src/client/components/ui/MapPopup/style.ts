@@ -21,17 +21,17 @@ export const MapPopupContainer = styled.div`
       strong {
         font-size: 1.25rem;
         font-family: 'Nunito', 'Roboto', sans-serif;
-        color: ${props => props.theme.colors.title};
+        color: var(--title);
       }
 
       p {
         font-size: 1rem;
-        color: ${props => props.theme.colors.detail};
+        color: var(--detail);
       }
     }
 
     button {
-      background: ${props => props.theme.colors.secondary};
+      background: var(--secondary);
       border-radius: 0 10px 10px 0;
       transition: opacity 0.3s;
 
@@ -52,12 +52,12 @@ export const MapPopupContainer = styled.div`
 const icon = css`
   width: 1.5rem;
   height: 1.5rem;
-  color: ${props => props.theme.colors.secondary};
+  color: var(--title);
   flex-shrink: 0;
-  transition: filter 0.2s;
+  transition: color 0.2s;
 
   &:hover {
-    filter: brightness(0.7);
+    color: var(--secondary);
   }
 `
 

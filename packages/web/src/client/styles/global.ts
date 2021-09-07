@@ -1,6 +1,14 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, css } from 'styled-components'
 
 export default createGlobalStyle`
+  :root {
+    ${({ theme }) => css`
+      ${Object.entries(theme.colors).map(
+        ([key, color]) => `--${key}:${color};`
+      )}
+    `}
+  }
+
   * {
     padding: 0;
     margin: 0;
@@ -8,7 +16,7 @@ export default createGlobalStyle`
   }
 
   body {
-    background: ${props => props.theme.colors.bg};
+    background: var(--bg);
   }
 
   body, input, button, textarea, .leaflet-container {
@@ -50,7 +58,7 @@ export default createGlobalStyle`
 
   .leaflet-marker-icon {
     border-radius: 50%;
-    box-shadow: 0 0 20px 1px ${props => props.theme.colors.secondary};
+    box-shadow: 0 0 20px 1px var(--secondary);
   }
 
   .leaflet-popup-content p {

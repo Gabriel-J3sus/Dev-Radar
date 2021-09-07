@@ -1,11 +1,11 @@
 import React, { FormEvent, useEffect, useState, useMemo } from 'react'
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
+
 import { Container } from '@styles/pages/register'
 import { Logo } from '@components/Logo'
-import Link from 'next/link'
-import FormInput from '@components/FormInput'
-import { useAuth } from 'src/hooks/useAuth'
-import { SelectValuesButton } from '@components/SelectValuesButton'
+import { FormInput, SelectValuesButton } from '@components/ui'
+import { useAuth } from '@hooks/useAuth'
 import { technologiesData } from '@data/technologies'
 
 const Register: React.FC = ({ children }) => {
@@ -25,7 +25,7 @@ const Register: React.FC = ({ children }) => {
   }
 
   const MapWithoutSSR = useMemo(
-    () => dynamic(() => import('@components/Map'), { ssr: false }),
+    () => dynamic(() => import('src/client/components/Map'), { ssr: false }),
     [latitude, longitude]
   )
 
@@ -95,14 +95,14 @@ const Register: React.FC = ({ children }) => {
             </div>
 
             <div className="step-container techs">
-              {technologiesData.map(({ id, value }) => (
+              {technologiesData.map((tech, index) => (
                 <SelectValuesButton
-                  key={id}
-                  id={id}
-                  addOrRemove={() => addOrRemoveTech(id)}
+                  key={index}
+                  id={index}
+                  addOrRemove={() => addOrRemoveTech(index)}
                   data={technologies}
                 >
-                  {value}
+                  {tech}
                 </SelectValuesButton>
               ))}
             </div>

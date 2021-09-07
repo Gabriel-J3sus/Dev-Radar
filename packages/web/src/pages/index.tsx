@@ -3,8 +3,8 @@ import { useRouter } from 'next/dist/client/router'
 import { BsSearch } from 'react-icons/bs'
 import dynamic from 'next/dynamic'
 
-import { Header } from '@components/Header'
-import { Card } from '@components/Card'
+import { Header } from '@components/sections'
+import { Card } from '@components/ui'
 
 import { HomeContainer, CardsWrapper } from '@styles/pages/home'
 import { Logo } from '@components/Logo'
@@ -21,7 +21,7 @@ const Home: React.FC = () => {
   }
 
   const MapWithoutSSR = useMemo(
-    () => dynamic(() => import('@components/Map'), { ssr: false }),
+    () => dynamic(() => import('src/client/components/Map'), { ssr: false }),
     [latitude, longitude]
   )
 

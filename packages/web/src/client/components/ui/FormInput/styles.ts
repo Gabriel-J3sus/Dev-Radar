@@ -9,15 +9,15 @@ export const FormInputContainer = styled.span<{ inputType: string }>`
 
   label {
     font-weight: 700;
-    color: ${props => props.theme.colors.tertiary};
+    color: var(--tertiary);
     margin-bottom: 0.3rem;
   }
 
   input {
     width: 100%;
     border: none;
-    border-bottom: 2px solid ${props => props.theme.colors.border};
-    color: ${props => props.theme.colors.primary};
+    border-bottom: 2px solid var(--border);
+    color: var(--primary);
 
     padding: ${props =>
       props.inputType === 'password'
@@ -28,7 +28,7 @@ export const FormInputContainer = styled.span<{ inputType: string }>`
     transition: border-bottom-color 0.3s ease-out;
 
     &:focus {
-      border-bottom-color: ${props => props.theme.colors.secondary};
+      border-bottom-color: var(--secondary);
     }
   }
 
@@ -55,12 +55,12 @@ export const EyeClosedIcon = styled(AiFillEyeInvisible)`
   width: 1.5rem;
   height: 1.5rem;
   flex-shrink: 0;
-  fill: ${props => props.theme.colors.primary};
+  fill: var(--primary);
 `
 
 export const EyeOpenIcon = styled(AiFillEye)`
   width: 1.5rem;
   height: 1.5rem;
   flex-shrink: 0;
-  fill: ${props => props.theme.colors.primary};
+  fill: var(--primary);
 `

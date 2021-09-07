@@ -1,9 +1,9 @@
 import React, { FormEvent, useRef } from 'react'
 
-import { AuthTemplate } from '@components/AuthPageTemplate'
+import { AuthTemplate } from '@components/sections'
 import { Container } from '@styles/pages/signin'
-import { Card } from '@components/Card'
-import { useAuth } from 'src/hooks/useAuth'
+import { Card } from '@components/ui'
+import { useAuth } from '@hooks/useAuth'
 
 const SignIn: React.FC = () => {
   const { signIn } = useAuth()

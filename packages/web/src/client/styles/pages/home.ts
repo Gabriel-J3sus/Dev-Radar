@@ -23,7 +23,7 @@ export const HomeContainer = styled.section`
       justify-content: center;
       white-space: nowrap;
 
-      color: ${props => props.theme.colors.secondary};
+      color: var(--secondary);
 
       &::before,
       &::after {
@@ -32,7 +32,7 @@ export const HomeContainer = styled.section`
         height: 1px;
         margin: 0 0.8rem;
 
-        background: ${props => props.theme.colors.logo};
+        background: var(--logo);
       }
     }
   }
@@ -57,20 +57,16 @@ export const HomeContainer = styled.section`
       margin: 0 0 0.8rem 0.8rem;
     }
   }
-`
+  `
 
 export const CardsWrapper = styled.div<{ isSearchMode: boolean }>`
   max-width: 320px;
 
   position: absolute;
   right: 0;
-  bottom: 0;
   z-index: 99;
 
-  margin-bottom: 3.12rem;
-
   display: ${({ isSearchMode }) => (isSearchMode ? 'flex' : 'none')};
-  flex-direction: column;
   justify-content: flex-end;
   gap: 2.25rem;
 
@@ -82,7 +78,6 @@ export const CardsWrapper = styled.div<{ isSearchMode: boolean }>`
     display: flex;
     flex-direction: column;
     gap: 1.625rem;
-    margin-top: 4rem;
     padding-bottom: 1rem;
   }
 
@@ -100,12 +95,12 @@ export const CardsWrapper = styled.div<{ isSearchMode: boolean }>`
 
       border: 2px solid transparent;
       border-radius: 20px 0 0 20px;
-      background: ${props => props.theme.colors.bgForm};
+      background: var(--bgForm);
       outline: none;
       transition: border-color 0.2s ease-in-out;
 
       &:focus {
-        border-color: ${props => props.theme.colors.secondary};
+        border-color: var(--secondary);
       }
     }
 
@@ -115,27 +110,43 @@ export const CardsWrapper = styled.div<{ isSearchMode: boolean }>`
 
       font-size: 0;
       border-radius: 0 15px 15px 0;
-      background: ${props => props.theme.colors.secondary};
-      transition: filter 0.3s;
+      background: var(--secondary);
+      transition: filter transform 0.3s;
 
       &:hover {
         filter: brightness(0.8);
+      }
+
+      &:active {
+        transform: scale(1.02);
       }
     }
   }
 
   @media (max-width: 550px) {
-    max-height: 80vh;
+    max-height: 85vh;
 
+    flex-direction: column;
+
+    bottom: 0;
     left: 0;
     margin-right: auto;
     margin-left: auto;
+    margin-bottom: 3.12rem;
     padding: 0 1rem;
+
+    > .content {
+      margin-top: 4rem;
+    }
   }
 
   @media (min-width: 551px) {
-    max-height: 100vh;
+    max-height: 97vh;
 
+    top: 0;
     margin-right: 2rem;
+    margin-top: 1rem;
+
+    flex-direction: column-reverse;
   }
 `
