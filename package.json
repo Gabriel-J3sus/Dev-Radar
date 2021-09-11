@@ -1,0 +1,21 @@
+{
+  "name": "dev-radar",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "commit": "cz"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "author": "Gabriel-J3sus <gabr.jesus001@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.4.3",
+    "@dev-radar/eslint-config": "*",
+    "@dev-radar/commitlint-config": "*"
+  }
+}
