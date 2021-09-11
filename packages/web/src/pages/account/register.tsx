@@ -4,7 +4,8 @@ import Link from 'next/link'
 
 import { Container } from '@styles/pages/register'
 import { Logo } from '@components/Logo'
-import { FormInput, SelectValuesButton } from '@components/ui'
+import { SelectValuesButton } from '@components/ui'
+import FormInput from '@components/ui/FormInput'
 import { useAuth } from '@hooks/useAuth'
 import { technologiesData } from '@data/technologies'
 

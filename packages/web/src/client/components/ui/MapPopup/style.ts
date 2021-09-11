@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components'
-import { RiMessage2Line } from 'react-icons/ri'
-import { FiGithub } from 'react-icons/fi'
-import { BsArrowRightShort } from 'react-icons/bs'
+import { GithubIcon, MessageIcon, ArrowRightIcon } from '@components/icons'
 
 export const MapPopupContainer = styled.div`
   display: flex;
@@ -61,14 +59,14 @@ const icon = css`
   }
 `
 
-export const GithubIcon = styled(FiGithub)`
+export const GithubIconStyle = styled(GithubIcon)`
   ${icon}
 `
-export const MessageIcon = styled(RiMessage2Line)`
+export const MessageIconStyle = styled(MessageIcon)`
   ${icon}
 `
 
-export const ArrowRightIcon = styled(BsArrowRightShort)`
+export const ArrowRightIconStyle = styled(ArrowRightIcon)`
   width: 2rem;
   height: 2rem;
   color: #fff;

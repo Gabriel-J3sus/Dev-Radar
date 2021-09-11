@@ -1,6 +1,5 @@
 import React from 'react'
-import { AiOutlinePoweroff, AiOutlineMessage } from 'react-icons/ai'
-import { BsSearch } from 'react-icons/bs'
+import { LogOutIcon, MessageOutlineIcon, SearchIcon } from '@components/icons'
 
 import { HeaderContainer } from './style'
 
@@ -13,13 +12,13 @@ export const Header: React.FC<HeaderProps> = ({ search, setSearch, children }) =
   return (
     <HeaderContainer>
       <button className="logout-button">
-        <AiOutlineMessage size={28} color="#FFF" />
+        <MessageOutlineIcon size={28} color="#FFF" />
       </button>
       <button className="logout-button" onClick={() => setSearch(!search)} style={search ? { opacity: 1 } : {}}>
-        <BsSearch size={24} color="#FFF"/>
+        <SearchIcon size={24} color="#FFF"/>
       </button>
       <button className="logout-button">
-        <AiOutlinePoweroff size={28} fill="#FFF" />
+        <LogOutIcon size={28} fill="#FFF" />
       </button>
     </HeaderContainer>
   )

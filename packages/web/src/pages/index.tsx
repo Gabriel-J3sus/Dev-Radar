@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { useRouter } from 'next/dist/client/router'
-import { BsSearch } from 'react-icons/bs'
 import dynamic from 'next/dynamic'
 
+import { SearchIcon } from '@components/icons'
 import { Header } from '@components/sections'
 import { Card } from '@components/ui'
 
@@ -64,7 +64,7 @@ const Home: React.FC = () => {
         <span>
           <input type="text" placeholder="Pesquisar por tecnologia..." />
           <button className="search-button">
-            <BsSearch size={24} color="#FFF" />
+            <SearchIcon size={24} color="#FFF" />
           </button>
         </span>
       </CardsWrapper>

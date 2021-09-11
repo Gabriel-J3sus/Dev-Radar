@@ -64,9 +64,12 @@ export const CardsWrapper = styled.div<{ isSearchMode: boolean }>`
 
   position: absolute;
   right: 0;
+  bottom: 0;
+  margin-bottom: 3.12rem;
   z-index: 99;
 
   display: ${({ isSearchMode }) => (isSearchMode ? 'flex' : 'none')};
+  flex-direction: column;
   justify-content: flex-end;
   gap: 2.25rem;
 
@@ -122,17 +125,13 @@ export const CardsWrapper = styled.div<{ isSearchMode: boolean }>`
       }
     }
   }
-
   @media (max-width: 550px) {
     max-height: 85vh;
 
-    flex-direction: column;
-
-    bottom: 0;
-    left: 0;
+    right: 0;
     margin-right: auto;
     margin-left: auto;
-    margin-bottom: 3.12rem;
+
     padding: 0 1rem;
 
     > .content {
@@ -141,12 +140,10 @@ export const CardsWrapper = styled.div<{ isSearchMode: boolean }>`
   }
 
   @media (min-width: 551px) {
-    max-height: 97vh;
+    max-height: 100vh;
 
     top: 0;
     margin-right: 2rem;
     margin-top: 1rem;
-
-    flex-direction: column-reverse;
   }
 `

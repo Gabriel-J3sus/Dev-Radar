@@ -1,10 +1,10 @@
 import React, { FormEvent } from 'react'
 import Link from 'next/link'
 
-import { Logo } from '@components/Logo'
+import { Logo } from '@components/icons'
+import FormInput from '@components/ui/FormInput'
 
 import { AuthTemplateContainer } from './style'
-import FormInput from '@components/ui'
 
 interface AuthTemplateProps {
   title: 'Logar'

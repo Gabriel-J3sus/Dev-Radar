@@ -1,5 +1,5 @@
-import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { ClosedEyeIcon, OpenEyeIcon } from '@components/icons'
 
 export const FormInputContainer = styled.span<{ inputType: string }>`
   width: 100%;
@@ -51,16 +51,18 @@ export const FormInputContainer = styled.span<{ inputType: string }>`
   }
 `
 
-export const EyeClosedIcon = styled(AiFillEyeInvisible)`
+const icons = css`
   width: 1.5rem;
   height: 1.5rem;
   flex-shrink: 0;
   fill: var(--primary);
 `
 
-export const EyeOpenIcon = styled(AiFillEye)`
-  width: 1.5rem;
-  height: 1.5rem;
-  flex-shrink: 0;
-  fill: var(--primary);
+export const EyeClosedIcon = styled(ClosedEyeIcon)`
+  ${icons}
+`
+
+export const EyeOpenIcon = styled(OpenEyeIcon)`
+  ${icons}
+
 `

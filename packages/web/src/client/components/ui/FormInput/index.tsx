@@ -7,7 +7,7 @@ interface FormInputProps extends InputHTMLAttributes<HTMLInputElement> {
   inputType: 'email' | 'text' | 'password' | 'number'
 }
 
-export const FormInput: React.ForwardRefRenderFunction<
+const FormInput: React.ForwardRefRenderFunction<
   HTMLInputElement,
   FormInputProps
 > = ({ label, inputType, ...rest }, ref) => {
@@ -42,4 +42,4 @@ export const FormInput: React.ForwardRefRenderFunction<
   )
 }
 
-
+export default forwardRef(FormInput)

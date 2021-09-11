@@ -1,9 +1,9 @@
 import React from 'react'
 import {
   MapPopupContainer,
-  GithubIcon,
-  MessageIcon,
-  ArrowRightIcon
+  GithubIconStyle as GithubIcon,
+  MessageIconStyle as MessageIcon,
+  ArrowRightIconStyle as ArrowRightIcon
 } from './style'
 
 export const MapPopup: React.FC = () => {
