@@ -1,3 +1,1 @@
-const config = require('@dev-radar/commitlint-config')
-
-module.exports = config
+module.exports = {extends: ['@commitlint/config-conventional']}

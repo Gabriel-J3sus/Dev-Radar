@@ -11,11 +11,24 @@
       "packages/*"
     ]
   },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+    }
+  },
   "author": "Gabriel-J3sus <gabr.jesus001@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "typescript": "^4.4.3",
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
     "@dev-radar/eslint-config": "*",
-    "@dev-radar/commitlint-config": "*"
+    "commitizen": "^4.2.4",
+    "husky": "^7.0.2",
+    "typescript": "^4.4.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
