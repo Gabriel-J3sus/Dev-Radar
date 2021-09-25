@@ -1,0 +1,58 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Technology {
+  id            Int         @id @default(autoincrement())
+  name          String      @unique
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  users         TechOnUser[]
+
+  @@map("technologies")
+}
+
+model User {
+  id              String      @id @default(uuid())
+  name            String
+  username        String      @unique
+  email           String      @unique
+  password        String
+  bio             String?     @db.VarChar(100)
+  location        Json?
+  social          Json?
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  technologies    TechOnUser[]
+  refresh_token   RefreshToken?
+
+  @@map("users")
+}
+
+model TechOnUser {
+  user            User        @relation(fields: [userId], references: [id])
+  userId          String
+  technology      Technology  @relation(fields: [technologyId], references: [id])
+  technologyId    Int
+  assignedAt      DateTime    @default(now())
+  assignedBy      String
+
+  @@id([userId, technologyId])
+}
+
+model RefreshToken {
+  id            String  @id @default(uuid())
+  expiresIn     Int
+  user          User    @relation(fields: [userId], references: [id])
+  userId        String
+
+  @@map("refresh_token")
+}

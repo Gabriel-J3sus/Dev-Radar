@@ -27,11 +27,13 @@ module.exports = {
     'react/prop-types': 'off',
     '@next/next/no-img-element': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'camelcase': 'off',
 
+    "no-useless-constructor": 0,
     'no-use-before-define': 0,
     'no-unused-expressions': 0,
     'prefer-const': 0,
     'multiline-ternary': 0,
-    '@typescript-eslint/no-unused-vars': 0
+    '@typescript-eslint/no-unused-vars': 0,
   }
 }
