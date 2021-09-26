@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "tsnd --transpile-only --respawn --ignore-watch node_modules src/server.ts"
   },
+  "prisma": {
+    "schema": "src/prisma/schema.prisma"
+  },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
     "@types/cors": "^2.8.12",
