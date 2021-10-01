@@ -1,7 +1,6 @@
-import { User } from '@prisma/client'
-
 import { EntityRepository } from '../entities/EntityRepository'
+import { UserEntity, UserFindUniqueArgsType } from '../entities/User'
 
 export interface IAuthenticationRepository extends EntityRepository {
-  findByEmail(email: string): Promise<User>
+  findByUniqueArgs(Params: { data: UserFindUniqueArgsType }): Promise<UserEntity | null>
 }

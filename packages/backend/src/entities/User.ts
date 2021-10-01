@@ -1,7 +1,7 @@
 // basicamente o model da aplicação
-import { User } from '@prisma/client'
+import { Prisma, User } from '@prisma/client'
 
-export type ReducedUser = Pick<
-  User,
-  'email' | 'password' | 'name' | 'id' | 'username'
->
+export type UserEntity = User;
+
+export type UserCreateInputType = Prisma.UserCreateInput;
+export type UserFindUniqueArgsType = Prisma.UserFindUniqueArgs;

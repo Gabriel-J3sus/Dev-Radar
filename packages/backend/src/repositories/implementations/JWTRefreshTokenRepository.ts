@@ -1,5 +1,6 @@
-import { PrismaClient, RefreshToken } from '@prisma/client'
+import { PrismaClient } from '@prisma/client'
 import dayjs from 'dayjs'
+import { DevRadar_Error } from '../../errors/errors'
 
 import { IRefreshTokenRepository } from '../IRefreshTokenRepository'
 
@@ -10,13 +11,13 @@ export class JWTRefreshTokenRepository implements IRefreshTokenRepository {
     this.prisma = new PrismaClient()
   }
 
-  expiration(): number {
+  expiration: IRefreshTokenRepository["expiration"] = () => {
     const expiresIn = dayjs().add(10, 'seconds').unix()
 
     return expiresIn
   }
 
-  async findByToken(refresh_token: string): Promise<RefreshToken> {
+  findByToken: IRefreshTokenRepository["findByToken"] = async ({ refresh_token }) => {
     const refreshToken = await this.prisma.refreshToken.findFirst({
       where: {
         id: refresh_token
@@ -26,7 +27,7 @@ export class JWTRefreshTokenRepository implements IRefreshTokenRepository {
     return refreshToken
   }
 
-  async generateRefreshToken(userId: string): Promise<RefreshToken> {
+  generateRefreshToken: IRefreshTokenRepository["generateRefreshToken"] = async ({ userId }) => {
     const expiresIn = this.expiration()
 
     try {
@@ -39,11 +40,11 @@ export class JWTRefreshTokenRepository implements IRefreshTokenRepository {
 
       return generetedRefreshToken
     } catch (err) {
-      throw new Error('Impossible to create a new token')
+      throw new DevRadar_Error("INVALID_REQUEST", "Impossível criar um novo token")
     }
   }
 
-  async deleteRefreshToken(userId: string): Promise<void> {
+  deleteRefreshToken: IRefreshTokenRepository["deleteRefreshToken"] = async ({ userId }) => {
     try {
       await this.prisma.refreshToken.deleteMany({
         where: {
@@ -51,7 +52,7 @@ export class JWTRefreshTokenRepository implements IRefreshTokenRepository {
         }
       })
     } catch (err) {
-      throw new Error('Impossible to delete token')
+      throw new DevRadar_Error("INVALID_REQUEST", "Impossível deletar token")
     }
   }
 }

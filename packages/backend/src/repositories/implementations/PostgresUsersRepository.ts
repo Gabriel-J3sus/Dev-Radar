@@ -1,8 +1,8 @@
 // implementa a interface
-import { PrismaClient, User } from '@prisma/client'
+import { PrismaClient } from '@prisma/client'
 import { hash } from 'bcryptjs'
+import { UserCreateInputType, UserEntity, UserFindUniqueArgsType } from '../../entities/User'
 
-import { ReducedUser } from '../../entities/User'
 import { IUsersRepository } from '../IUsersRepository'
 
 export class PostgresUsersRepository implements IUsersRepository {
@@ -12,27 +12,13 @@ export class PostgresUsersRepository implements IUsersRepository {
     this.prisma = new PrismaClient()
   }
 
-  async findByEmail(email: string): Promise<User> {
-    const user = await this.prisma.user.findUnique({
-      where: {
-        email
-      }
-    })
+  findByUniqueArgs: IUsersRepository["findByUniqueArgs"] = async ({ data }) => {
+    const user = await this.prisma.user.findUnique(data)
 
     return user
   }
 
-  async findByUsername(username: string): Promise<User> {
-    const user = await this.prisma.user.findUnique({
-      where: {
-        username
-      }
-    })
-
-    return user
-  }
-
-  async save(data: ReducedUser): Promise<User> {
+  save: IUsersRepository["save"] = async ({ data }) => {
     data.password = await hash(data.password, 8)
 
     const user = await this.prisma.user.create({ data })

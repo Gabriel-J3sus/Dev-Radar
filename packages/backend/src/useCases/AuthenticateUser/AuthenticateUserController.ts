@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 import * as Yup from 'yup'
+import { DevRadar_Error } from '../../errors/errors'
 
 import { AuthenticateUserUseCase } from './AuthenticateUserUseCase'
 
@@ -28,9 +29,7 @@ export class AuthenticateUserController {
 
       return response.status(200).json(token)
     } catch (err) {
-      return response.status(400).json({
-        message: err.message || 'Unexpcted error has ocurred'
-      })
+      throw new DevRadar_Error("UNEXPECTD_ERROR")
     }
   }
 }

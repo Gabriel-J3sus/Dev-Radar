@@ -1,6 +1,7 @@
 // sua única responsabilidade é receber e processar a requisição do usuário e devolver uma resposta
 import { Request, Response } from 'express'
 import * as Yup from 'yup'
+import { DevRadar_Error } from '../../errors/errors'
 
 import { CreateUserUseCase } from './CreateUserUseCase'
 
@@ -33,9 +34,7 @@ export class CreateUserController {
 
       return response.status(201).json(user)
     } catch (err) {
-      return response.status(400).json({
-        message: err.message || 'Unexpcted error has ocurred'
-      })
+      throw new DevRadar_Error("UNEXPECTD_ERROR")
     }
   }
 }

@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 import { verify } from 'jsonwebtoken'
+import { DevRadar_Error } from '../errors/errors'
 
 export function EnsureAuthentication(
   request: Request,
@@ -9,7 +10,7 @@ export function EnsureAuthentication(
   const authToken = request.headers.authorization
 
   if (!authToken) {
-    throw new Error('Token is missing')
+    throw new DevRadar_Error("INVALID_REQUEST", "Token é obrigatório")
   }
 
   const [, token] = authToken.split(' ')
@@ -19,6 +20,6 @@ export function EnsureAuthentication(
 
     return next()
   } catch (error) {
-    throw new Error('Token invalid')
+    throw new DevRadar_Error("INVALID_REQUEST", "Token inválido")
   }
 }

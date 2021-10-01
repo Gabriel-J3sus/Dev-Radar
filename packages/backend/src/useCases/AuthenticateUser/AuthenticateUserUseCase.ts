@@ -15,7 +15,13 @@ export class AuthenticateUserUseCase {
   ) {}
 
   async execute({ email, password }: IAuthenticateUserRequestDTO) {
-    const userExists = await this.authenticationRepository.findByEmail(email)
+    const userExists = await this.authenticationRepository.findByUniqueArgs({
+      data: {
+        where: {
+          email
+        }
+      }
+    })
 
     if (!userExists) {
       throw new Error('Email or password incorrect')
@@ -29,10 +35,10 @@ export class AuthenticateUserUseCase {
 
     const token = this.generateTokenProvider.generator(userExists.id)
 
-    await this.jwtRefreshTokenRepository.deleteRefreshToken(userExists.id)
+    await this.jwtRefreshTokenRepository.deleteRefreshToken({ userId: userExists.id })
 
     const refreshToken =
-      await this.jwtRefreshTokenRepository.generateRefreshToken(userExists.id)
+      await this.jwtRefreshTokenRepository.generateRefreshToken({ userId: userExists.id })
 
     return { token, refreshToken }
   }
