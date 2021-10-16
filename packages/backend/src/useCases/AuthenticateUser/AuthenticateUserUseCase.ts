@@ -1,4 +1,5 @@
 import { compare } from 'bcryptjs'
+import { DevRadar_Error } from '../../errors/errors'
 
 import { GenerateTokenProvider } from '../../providers/GenerateTokenProvider'
 
@@ -24,21 +25,25 @@ export class AuthenticateUserUseCase {
     })
 
     if (!userExists) {
-      throw new Error('Email or password incorrect')
+      throw new DevRadar_Error('UNAUTHORIZED', 'Email or password incorrect')
     }
 
     const passwordMatch = await compare(password, userExists.password)
 
     if (!passwordMatch) {
-      throw new Error('Email or password incorrect')
+      throw new DevRadar_Error('UNAUTHORIZED', 'Email or password incorrect')
     }
 
     const token = this.generateTokenProvider.generator(userExists.id)
 
-    await this.jwtRefreshTokenRepository.deleteRefreshToken({ userId: userExists.id })
+    await this.jwtRefreshTokenRepository.deleteRefreshToken({
+      userId: userExists.id
+    })
 
     const refreshToken =
-      await this.jwtRefreshTokenRepository.generateRefreshToken({ userId: userExists.id })
+      await this.jwtRefreshTokenRepository.generateRefreshToken({
+        userId: userExists.id
+      })
 
     return { token, refreshToken }
   }

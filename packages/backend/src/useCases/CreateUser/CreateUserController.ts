@@ -34,7 +34,7 @@ export class CreateUserController {
 
       return response.status(201).json(user)
     } catch (err) {
-      throw new DevRadar_Error("UNEXPECTD_ERROR")
+      throw new DevRadar_Error('UNEXPECTD_ERROR')
     }
   }
 }

@@ -29,7 +29,7 @@ export class AuthenticateUserController {
 
       return response.status(200).json(token)
     } catch (err) {
-      throw new DevRadar_Error("UNEXPECTD_ERROR")
+      throw new DevRadar_Error('UNEXPECTD_ERROR')
     }
   }
 }

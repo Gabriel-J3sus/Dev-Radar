@@ -10,7 +10,7 @@ export function EnsureAuthentication(
   const authToken = request.headers.authorization
 
   if (!authToken) {
-    throw new DevRadar_Error("INVALID_REQUEST", "Token é obrigatório")
+    throw new DevRadar_Error('INVALID_REQUEST', 'Token required')
   }
 
   const [, token] = authToken.split(' ')
@@ -20,6 +20,6 @@ export function EnsureAuthentication(
 
     return next()
   } catch (error) {
-    throw new DevRadar_Error("INVALID_REQUEST", "Token inválido")
+    throw new DevRadar_Error('INVALID_REQUEST', 'Invalid Token')
   }
 }

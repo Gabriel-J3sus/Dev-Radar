@@ -1,3 +1,5 @@
+// Igual aos repositories, mas preferi separar a comunicação com serviços externos, ou repetitivos em um lugar só
+
 import { sign } from 'jsonwebtoken'
 
 export class GenerateTokenProvider {

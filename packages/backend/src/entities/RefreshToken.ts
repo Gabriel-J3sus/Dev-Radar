@@ -1,3 +1,3 @@
-import { Prisma, RefreshToken } from '@prisma/client'
+import { RefreshToken } from '@prisma/client'
 
-export type RefreshTokenEntity = RefreshToken;
+export type RefreshTokenEntity = RefreshToken

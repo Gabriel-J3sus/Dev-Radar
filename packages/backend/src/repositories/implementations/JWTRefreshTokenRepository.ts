@@ -11,13 +11,15 @@ export class JWTRefreshTokenRepository implements IRefreshTokenRepository {
     this.prisma = new PrismaClient()
   }
 
-  expiration: IRefreshTokenRepository["expiration"] = () => {
+  expiration: IRefreshTokenRepository['expiration'] = () => {
     const expiresIn = dayjs().add(10, 'seconds').unix()
 
     return expiresIn
   }
 
-  findByToken: IRefreshTokenRepository["findByToken"] = async ({ refresh_token }) => {
+  findByToken: IRefreshTokenRepository['findByToken'] = async ({
+    refresh_token
+  }) => {
     const refreshToken = await this.prisma.refreshToken.findFirst({
       where: {
         id: refresh_token
@@ -27,24 +29,30 @@ export class JWTRefreshTokenRepository implements IRefreshTokenRepository {
     return refreshToken
   }
 
-  generateRefreshToken: IRefreshTokenRepository["generateRefreshToken"] = async ({ userId }) => {
-    const expiresIn = this.expiration()
+  generateRefreshToken: IRefreshTokenRepository['generateRefreshToken'] =
+    async ({ userId }) => {
+      const expiresIn = this.expiration()
 
-    try {
-      const generetedRefreshToken = await this.prisma.refreshToken.create({
-        data: {
-          userId,
-          expiresIn
-        }
-      })
+      try {
+        const generetedRefreshToken = await this.prisma.refreshToken.create({
+          data: {
+            userId,
+            expiresIn
+          }
+        })
 
-      return generetedRefreshToken
-    } catch (err) {
-      throw new DevRadar_Error("INVALID_REQUEST", "Impossível criar um novo token")
+        return generetedRefreshToken
+      } catch (err) {
+        throw new DevRadar_Error(
+          'INVALID_REQUEST',
+          'Impossible to create new token'
+        )
+      }
     }
-  }
 
-  deleteRefreshToken: IRefreshTokenRepository["deleteRefreshToken"] = async ({ userId }) => {
+  deleteRefreshToken: IRefreshTokenRepository['deleteRefreshToken'] = async ({
+    userId
+  }) => {
     try {
       await this.prisma.refreshToken.deleteMany({
         where: {
@@ -52,7 +60,7 @@ export class JWTRefreshTokenRepository implements IRefreshTokenRepository {
         }
       })
     } catch (err) {
-      throw new DevRadar_Error("INVALID_REQUEST", "Impossível deletar token")
+      throw new DevRadar_Error('INVALID_REQUEST', 'Impossible to delete token')
     }
   }
 }

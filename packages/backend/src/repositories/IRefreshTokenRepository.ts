@@ -4,7 +4,9 @@ import { RefreshTokenEntity } from '../entities/RefreshToken'
 export interface IRefreshTokenRepository extends EntityRepository {
   expiration(): number
   generateRefreshToken(Params: { userId: string }): Promise<RefreshTokenEntity>
-  findByToken(Params: { refresh_token: string }): Promise<RefreshTokenEntity | null>
+  findByToken(Params: {
+    refresh_token: string
+  }): Promise<RefreshTokenEntity | null>
   deleteRefreshToken(Params: { userId: string }): Promise<void>
 }
 

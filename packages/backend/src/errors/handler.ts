@@ -6,7 +6,7 @@ interface ValidationErrors {
   [key: string]: string[]
 }
 
-const serverError = new DevRadar_Error("SERVER_ERROR")
+const serverError = new DevRadar_Error('SERVER_ERROR')
 
 const errorHandler: ErrorRequestHandler = (error, request, response, next) => {
   if (error instanceof ValidationError) {
@@ -19,9 +19,8 @@ const errorHandler: ErrorRequestHandler = (error, request, response, next) => {
     })
 
     return response.status(400).json({ message: 'Validation error', errors })
-
   } else if (error.isDeRadarError) {
-    const err = error as DevRadar_Error;
+    const err = error as DevRadar_Error
     return response.status(err.status).send(err)
   }
 
