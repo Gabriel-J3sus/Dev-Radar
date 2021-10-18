@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import * as Yup from 'yup'
-import { DevRadar_Error } from '../../errors/errors'
+import { DevRadar_Error, Errors } from '../../errors/errors'
 import { ForgotPasswordUseCase } from './ForgotPasswordUseCase'
 
 export class ForgotPasswordController {
@@ -22,7 +22,15 @@ export class ForgotPasswordController {
         message: 'An e-mail was sent to your address'
       })
     } catch (err) {
-      throw new DevRadar_Error('UNAUTHORIZED')
+      const isPredictedError =
+        err.name &&
+        Errors.find(devRadarError => devRadarError.name === err.name)
+
+      if (isPredictedError) {
+        throw new DevRadar_Error(err.name, err.message)
+      } else {
+        throw new DevRadar_Error('UNEXPECTD_ERROR')
+      }
     }
   }
 }

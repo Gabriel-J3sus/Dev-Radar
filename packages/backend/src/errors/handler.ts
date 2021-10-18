@@ -19,12 +19,11 @@ const errorHandler: ErrorRequestHandler = (error, request, response, next) => {
     })
 
     return response.status(400).json({ message: 'Validation error', errors })
-  } else if (error.isDeRadarError) {
+  } else if (error.isDevRadarError) {
     const err = error as DevRadar_Error
+
     return response.status(err.status).send(err)
   }
-
-  // console.error(error)
 
   return response.send(serverError)
 }

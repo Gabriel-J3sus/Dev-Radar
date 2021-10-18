@@ -2,7 +2,13 @@ import { Request, Response, NextFunction } from 'express'
 import { verify } from 'jsonwebtoken'
 import { DevRadar_Error } from '../errors/errors'
 
-export function EnsureAuthentication(
+interface TokenPayload {
+  id: string
+  iat: number
+  exp: number
+}
+
+export function ensureAuthentication(
   request: Request,
   response: Response,
   next: NextFunction
@@ -16,10 +22,15 @@ export function EnsureAuthentication(
   const [, token] = authToken.split(' ')
 
   try {
-    verify(token, process.env.JWT_SECRET)
+    const data = verify(token, process.env.JWT_SECRET)
+
+    const { id } = data as TokenPayload
+
+    request.userId = id
 
     return next()
   } catch (error) {
+    console.log(error)
     throw new DevRadar_Error('INVALID_REQUEST', 'Invalid Token')
   }
 }

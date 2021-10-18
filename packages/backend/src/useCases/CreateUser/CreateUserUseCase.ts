@@ -48,7 +48,6 @@ export class CreateUserUseCase {
         ...userData
       }
     })
-
     this.mailProvider.sendMail({
       to: {
         name: userData.name,

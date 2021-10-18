@@ -1,9 +1,11 @@
 import { Router } from 'express'
+import { ensureAuthentication } from './middlewares/ensureAuthentication'
 
 import { authenticateUserController } from './useCases/AuthenticateUser'
 import { createUserController } from './useCases/CreateUser'
 import { forgotPasswordController } from './useCases/ForgotPassword'
 import { refreshTokenController } from './useCases/RefreshToken'
+import { updateUserController } from './useCases/UpdateUser'
 
 const routes = Router()
 
@@ -19,6 +21,10 @@ routes.post('/refresh-token', (request, response) =>
 
 routes.post('/forgot-password', (request, response) => {
   forgotPasswordController.handle(request, response)
+})
+
+routes.put('/update-user', ensureAuthentication, (request, response) => {
+  updateUserController.handle(request, response)
 })
 
 export { routes }

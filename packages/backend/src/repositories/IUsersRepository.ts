@@ -4,7 +4,9 @@ import { EntityRepository } from '../entities/EntityRepository'
 import {
   UserFindUniqueArgsType,
   UserEntity,
-  UserCreateInputType
+  UserCreateInputType,
+  UserEntityWithoutPassword,
+  UserUpdateInputType
 } from '../entities/User'
 
 export interface IUsersRepository extends EntityRepository {
@@ -12,4 +14,7 @@ export interface IUsersRepository extends EntityRepository {
     data: UserFindUniqueArgsType
   }): Promise<UserEntity | null>
   save(Params: { data: UserCreateInputType }): Promise<UserEntity>
+  update(Params: {
+    data: UserUpdateInputType & { email: string; username: string }
+  }): Promise<UserEntityWithoutPassword>
 }

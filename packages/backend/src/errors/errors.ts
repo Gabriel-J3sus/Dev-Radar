@@ -13,7 +13,7 @@ export enum ERR_SEVERITY {
   WARNING = 'WARNING'
 }
 
-const Errors = [
+export const Errors = [
   {
     code: '401',
     isDevRadarError: true,

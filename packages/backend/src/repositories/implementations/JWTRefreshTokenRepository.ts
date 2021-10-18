@@ -25,6 +25,7 @@ export class JWTRefreshTokenRepository implements IRefreshTokenRepository {
         id: refresh_token
       }
     })
+    console.log(refresh_token)
 
     return refreshToken
   }
