@@ -10,12 +10,15 @@ export class UpdateUserController {
 
   async handle(request: Request, response: Response): Promise<Response> {
     const data: UserEntity = request.body
-    try {
-      // problem right here - tomorrow I fix
-      const user = await this.updateUserUseCase.execute({
-        ...data
-      })
+    const userId = request.userId
 
+    try {
+      console.log(data)
+      const user = await this.updateUserUseCase.execute({
+        ...data,
+        id: userId
+      })
+      console.log('aa')
       return response.json(user)
     } catch (err) {
       const isPredictedError = Errors.find(

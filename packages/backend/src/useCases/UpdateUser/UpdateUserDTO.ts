@@ -1,8 +1,7 @@
 import { Prisma } from '@prisma/client'
 
 export type IUpdateUserRequestDTO = Prisma.UserUpdateInput & {
-  email: string
-  username: string
+  id: string
 }
 
 export type IUpdateUserPasswordRequestDTO = {

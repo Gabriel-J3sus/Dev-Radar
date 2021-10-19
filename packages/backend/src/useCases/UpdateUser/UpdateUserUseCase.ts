@@ -2,10 +2,7 @@ import { UserEntity, UserEntityWithoutPassword } from '../../entities/User'
 import { DevRadar_Error } from '../../errors/errors'
 import { IMailProvider } from '../../providers/IMailProvider'
 import { IUsersRepository } from '../../repositories/IUsersRepository'
-import {
-  IUpdateUserPasswordRequestDTO,
-  IUpdateUserRequestDTO
-} from './UpdateUserDTO'
+import { IUpdateUserRequestDTO } from './UpdateUserDTO'
 
 export class UpdateUserUseCase {
   constructor(
@@ -14,31 +11,21 @@ export class UpdateUserUseCase {
   ) {}
 
   async execute({
-    username,
-    email,
+    id,
     ...dataToBeUpdated
   }: IUpdateUserRequestDTO): Promise<UserEntityWithoutPassword> {
-    const userExists = await this.usersRepository.findByUniqueArgs({
+    console.log('aaaaaaaabbb')
+    const updatedUser = await this.usersRepository.update({
       data: {
         where: {
-          email: email,
-          username: username
+          id: id
+        },
+        data: {
+          ...dataToBeUpdated
         }
       }
     })
 
-    if (userExists) {
-      throw new DevRadar_Error('UNAUTHORIZED', 'User does not exist')
-    }
-
-    const newUser = await this.usersRepository.update({
-      data: {
-        email,
-        username,
-        ...dataToBeUpdated
-      }
-    })
-
-    return newUser
+    return updatedUser
   }
 }

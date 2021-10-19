@@ -1,11 +1,6 @@
 // implementa a interface
 import { PrismaClient } from '@prisma/client'
 import { hash } from 'bcryptjs'
-import {
-  UserCreateInputType,
-  UserEntity,
-  UserFindUniqueArgsType
-} from '../../entities/User'
 import { DevRadar_Error } from '../../errors/errors'
 
 import { IUsersRepository } from '../IUsersRepository'
@@ -40,16 +35,10 @@ export class PostgresUsersRepository implements IUsersRepository {
 
   update: IUsersRepository['update'] = async ({ data }) => {
     try {
-      const user = await this.prisma.user.update({
-        where: {
-          email: data.email,
-          username: data.username
-        },
-        data: {
-          ...data
-        }
-      })
+      console.log(data)
+      const user = await this.prisma.user.update(data)
 
+      console.log('user: ' + user)
       return user
     } catch {
       throw new DevRadar_Error('INVALID_REQUEST', 'Impossible to update user')

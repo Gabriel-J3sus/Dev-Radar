@@ -3,7 +3,7 @@ import { verify } from 'jsonwebtoken'
 import { DevRadar_Error } from '../errors/errors'
 
 interface TokenPayload {
-  id: string
+  sub: string
   iat: number
   exp: number
 }
@@ -24,13 +24,12 @@ export function ensureAuthentication(
   try {
     const data = verify(token, process.env.JWT_SECRET)
 
-    const { id } = data as TokenPayload
+    const { sub } = data as TokenPayload
 
-    request.userId = id
+    request.userId = sub
 
     return next()
   } catch (error) {
-    console.log(error)
     throw new DevRadar_Error('INVALID_REQUEST', 'Invalid Token')
   }
 }
