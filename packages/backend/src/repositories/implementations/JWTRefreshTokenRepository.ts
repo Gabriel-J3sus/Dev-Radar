@@ -12,7 +12,7 @@ export class JWTRefreshTokenRepository implements IRefreshTokenRepository {
   }
 
   expiration: IRefreshTokenRepository['expiration'] = () => {
-    const expiresIn = dayjs().add(10, 'seconds').unix()
+    const expiresIn = dayjs().add(50, 'minute').unix()
 
     return expiresIn
   }

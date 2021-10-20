@@ -13,23 +13,15 @@ export class UpdateUserController {
     const userId = request.userId
 
     try {
-      console.log(data)
       const user = await this.updateUserUseCase.execute({
         ...data,
         id: userId
       })
-      console.log('aa')
+
       return response.json(user)
     } catch (err) {
-      const isPredictedError = Errors.find(
-        devRadarError => devRadarError.name === err.name
-      )
-
-      if (isPredictedError) {
-        throw new DevRadar_Error(
-          isPredictedError.name,
-          isPredictedError.message
-        )
+      if (err instanceof DevRadar_Error) {
+        throw err
       } else {
         throw new DevRadar_Error('UNEXPECTD_ERROR')
       }

@@ -35,10 +35,8 @@ export class PostgresUsersRepository implements IUsersRepository {
 
   update: IUsersRepository['update'] = async ({ data }) => {
     try {
-      console.log(data)
       const user = await this.prisma.user.update(data)
 
-      console.log('user: ' + user)
       return user
     } catch {
       throw new DevRadar_Error('INVALID_REQUEST', 'Impossible to update user')

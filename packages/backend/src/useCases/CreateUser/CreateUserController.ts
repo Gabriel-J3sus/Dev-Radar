@@ -34,12 +34,8 @@ export class CreateUserController {
 
       return response.status(201).json(user)
     } catch (err) {
-      const isPredictedError =
-        err.name &&
-        Errors.find(devRadarError => devRadarError.name === err.name)
-
-      if (isPredictedError) {
-        throw new DevRadar_Error(err.name, err.message)
+      if (err instanceof DevRadar_Error) {
+        throw err
       } else {
         throw new DevRadar_Error('UNEXPECTD_ERROR')
       }

@@ -45,6 +45,8 @@ export class CreateUserUseCase {
       data: {
         email,
         username,
+        location: {},
+        social: {},
         ...userData
       }
     })

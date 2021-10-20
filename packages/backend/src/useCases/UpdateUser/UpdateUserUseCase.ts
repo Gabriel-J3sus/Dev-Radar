@@ -14,7 +14,6 @@ export class UpdateUserUseCase {
     id,
     ...dataToBeUpdated
   }: IUpdateUserRequestDTO): Promise<UserEntityWithoutPassword> {
-    console.log('aaaaaaaabbb')
     const updatedUser = await this.usersRepository.update({
       data: {
         where: {
