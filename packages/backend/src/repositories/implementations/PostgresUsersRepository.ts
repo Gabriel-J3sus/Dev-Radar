@@ -1,6 +1,6 @@
 // implementa a interface
 import { PrismaClient } from '@prisma/client'
-import { hash } from 'bcryptjs'
+import { hash, compare } from 'bcryptjs'
 import { DevRadar_Error } from '../../errors/errors'
 
 import { IUsersRepository } from '../IUsersRepository'

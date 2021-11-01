@@ -50,7 +50,7 @@ export class CreateUserUseCase {
         ...userData
       }
     })
-    this.mailProvider.sendMail({
+    await this.mailProvider.sendMail({
       to: {
         name: userData.name,
         email: email

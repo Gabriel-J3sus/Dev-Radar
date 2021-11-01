@@ -2,11 +2,16 @@
 
 import { sign } from 'jsonwebtoken'
 
+interface GenerateTokenProviderProps {
+  userId: string
+  expiresIn?: string | number
+}
+
 export class GenerateTokenProvider {
-  generator(userId: string): string {
+  generator({ expiresIn, userId }: GenerateTokenProviderProps): string {
     const token = sign({}, process.env.JWT_SECRET, {
       subject: userId,
-      expiresIn: '1h'
+      expiresIn: expiresIn || '1d'
     })
 
     return token

@@ -34,7 +34,9 @@ export class AuthenticateUserUseCase {
       throw new DevRadar_Error('UNAUTHORIZED', 'Email or password incorrect')
     }
 
-    const token = this.generateTokenProvider.generator(userExists.id)
+    const token = this.generateTokenProvider.generator({
+      userId: userExists.id
+    })
 
     await this.jwtRefreshTokenRepository.deleteRefreshToken({
       userId: userExists.id

@@ -3,13 +3,9 @@ import { PostgresUsersRepository } from '../../repositories/implementations/Post
 import { UpdateUserController } from './UpdateUserController'
 import { UpdateUserUseCase } from './UpdateUserUseCase'
 
-const mailtrapMailProvider = new MailtrapMailProvider()
 const postgresUsersRepository = new PostgresUsersRepository()
 
-const updateUserUseCase = new UpdateUserUseCase(
-  postgresUsersRepository,
-  mailtrapMailProvider
-)
+const updateUserUseCase = new UpdateUserUseCase(postgresUsersRepository)
 
 const updateUserController = new UpdateUserController(updateUserUseCase)
 

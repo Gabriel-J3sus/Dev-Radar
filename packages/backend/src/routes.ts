@@ -6,6 +6,7 @@ import { createUserController } from './useCases/CreateUser'
 import { forgotPasswordController } from './useCases/ForgotPassword'
 import { refreshTokenController } from './useCases/RefreshToken'
 import { updateUserController } from './useCases/UpdateUser'
+import { alterPasswordController } from './useCases/AlterPassword'
 
 const routes = Router()
 
@@ -19,12 +20,16 @@ routes.post('/refresh-token', (request, response) =>
   refreshTokenController.handle(request, response)
 )
 
-routes.post('/forgot-password', (request, response) => {
+routes.post('/forgot-password', (request, response) =>
   forgotPasswordController.handle(request, response)
-})
+)
 
-routes.put('/update-user', ensureAuthentication, (request, response) => {
+routes.put('/update-user', ensureAuthentication, (request, response) =>
   updateUserController.handle(request, response)
-})
+)
+
+routes.put('/alter-password', ensureAuthentication, (request, response) =>
+  alterPasswordController.handle(request, response)
+)
 
 export { routes }

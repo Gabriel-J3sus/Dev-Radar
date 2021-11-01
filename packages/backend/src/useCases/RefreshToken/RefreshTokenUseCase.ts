@@ -26,7 +26,9 @@ export class RefreshTokenUseCase {
       dayjs.unix(refreshToken.expiresIn)
     )
 
-    const token = this.generateTokenProvider.generator(refreshToken.userId)
+    const token = this.generateTokenProvider.generator({
+      userId: refreshToken.userId
+    })
 
     if (refreshTokenExpired) {
       await this.refreshTokenRepository.deleteRefreshToken({

@@ -1,7 +1,7 @@
 // sua única responsabilidade é receber e processar a requisição do usuário e devolver uma resposta
 import { Request, Response } from 'express'
 import * as Yup from 'yup'
-import { DevRadar_Error, Errors, IDevRadar_ERROR } from '../../errors/errors'
+import { DevRadar_Error } from '../../errors/errors'
 
 import { CreateUserUseCase } from './CreateUserUseCase'
 
@@ -35,7 +35,7 @@ export class CreateUserController {
       return response.status(201).json(user)
     } catch (err) {
       if (err instanceof DevRadar_Error) {
-        throw err
+        return response.json(err)
       } else {
         throw new DevRadar_Error('UNEXPECTD_ERROR')
       }

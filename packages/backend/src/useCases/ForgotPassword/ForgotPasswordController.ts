@@ -13,17 +13,17 @@ export class ForgotPasswordController {
       email: Yup.string().email().required()
     })
 
-    await schema.validate(email, { abortEarly: false })
+    await schema.validate({ email }, { abortEarly: false })
 
     try {
-      this.forgotPasswordUseCase.execute(email)
+      await this.forgotPasswordUseCase.execute({ email })
 
       return response.json({
         message: 'An e-mail was sent to your address'
       })
     } catch (err) {
       if (err instanceof DevRadar_Error) {
-        throw err
+        return response.json(err)
       } else {
         throw new DevRadar_Error('UNEXPECTD_ERROR')
       }

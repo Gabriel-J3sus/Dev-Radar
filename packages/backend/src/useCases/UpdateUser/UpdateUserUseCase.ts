@@ -1,14 +1,11 @@
-import { UserEntity, UserEntityWithoutPassword } from '../../entities/User'
-import { DevRadar_Error } from '../../errors/errors'
+/* eslint-disable dot-notation */
+import { UserEntityWithoutPassword } from '../../entities/User'
 import { IMailProvider } from '../../providers/IMailProvider'
 import { IUsersRepository } from '../../repositories/IUsersRepository'
 import { IUpdateUserRequestDTO } from './UpdateUserDTO'
 
 export class UpdateUserUseCase {
-  constructor(
-    private usersRepository: IUsersRepository,
-    private mailProvider: IMailProvider
-  ) {}
+  constructor(private usersRepository: IUsersRepository) {}
 
   async execute({
     id,
@@ -17,7 +14,7 @@ export class UpdateUserUseCase {
     const updatedUser = await this.usersRepository.update({
       data: {
         where: {
-          id: id
+          id
         },
         data: {
           ...dataToBeUpdated

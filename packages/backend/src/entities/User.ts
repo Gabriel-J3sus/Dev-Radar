@@ -7,3 +7,4 @@ export type UserEntityWithoutPassword = Omit<User, 'password'>
 export type UserCreateInputType = Prisma.UserCreateInput
 export type UserFindUniqueArgsType = Prisma.UserFindUniqueArgs
 export type UserUpdateArgsType = Prisma.UserUpdateArgs
+export type UserUpdateInputType = Prisma.UserUpdateInput
