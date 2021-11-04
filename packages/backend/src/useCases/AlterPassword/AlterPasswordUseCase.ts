@@ -8,6 +8,7 @@ import {
 } from '../AlterPassword/AlterPasswordDTO'
 import { compare, hash } from 'bcryptjs'
 import { DevRadar_Error } from '../../errors/errors'
+import { EjsProvider } from '../../providers/implementations/EjsProvider'
 
 export class AlterPasswordUseCase {
   constructor(
@@ -93,7 +94,9 @@ export class AlterPasswordUseCase {
           email: 'devradar@gmail.com'
         },
         subject: 'Troca de senha',
-        body: '<p>Sua senha foi alterada com sucesso!</p>'
+        body: await EjsProvider.renderHtmlFile({
+          name: 'NewPasswordMailTemplate'
+        })
       })
 
       return updatedUser

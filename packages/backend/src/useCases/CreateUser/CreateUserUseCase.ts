@@ -55,8 +55,6 @@ export class CreateUserUseCase {
       }
     })
 
-    
-
     await this.mailProvider.sendMail({
       to: {
         name: userData.name,
@@ -67,12 +65,11 @@ export class CreateUserUseCase {
         email: 'devradar@gmail.com'
       },
       subject: 'Seja bem-vindo ao DevRadar',
-      body: await EjsProvider.renderHtmlFile({ 
-        name: "CreateUserMailTemplate"
+      body: await EjsProvider.renderHtmlFile({
+        name: 'CreateUserMailTemplate'
       })
     })
 
     return user
   }
-
 }

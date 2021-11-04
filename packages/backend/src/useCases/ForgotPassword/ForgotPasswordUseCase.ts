@@ -3,6 +3,7 @@ import path from 'path'
 import { DevRadar_Error } from '../../errors/errors'
 import { GenerateTokenProvider } from '../../providers/GenerateTokenProvider'
 import { IMailProvider } from '../../providers/IMailProvider'
+import { EjsProvider } from '../../providers/implementations/EjsProvider'
 import { IUsersRepository } from '../../repositories/IUsersRepository'
 import { IForgotPasswordDTO } from './ForgotPasswordDTO'
 
@@ -29,13 +30,7 @@ export class ForgotPasswordUseCase {
       userId: userExists.id,
       expiresIn: 60000 * 30 // 30 miniutes
     })
-    console.log('ok')
-    const htmlFile = await ejs.renderFile(
-      path.join(path.join(__dirname, '..', '..', 'MailTemplates', 'aaa.ejs')),
-      null,
-      {}
-    )
-    console.log(htmlFile)
+
     await this.mailProvider.sendMail({
       to: {
         name: userExists.name,
@@ -46,7 +41,9 @@ export class ForgotPasswordUseCase {
         email: 'devradar@gmail.com'
       },
       subject: 'Troca de senha',
-      body: htmlFile
+      body: await EjsProvider.renderHtmlFile({
+        name: 'ForgotPasswordMailTemplate'
+      })
     })
   }
 }
