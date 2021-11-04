@@ -1,12 +1,16 @@
 // serve para a implementação da lógica da aplicação, não importa aonde os usuarios são armazezados etc.
 // sua única responsabilidade é criar um usuário
 
-import { User } from '@prisma/client'
+// import { User } from '@prisma/client'
+import ejs from 'ejs'
+import path from 'path'
+import { UserEntity } from '../../entities/User'
 import { DevRadar_Error } from '../../errors/errors'
 import { IMailProvider } from '../../providers/IMailProvider'
 
 import { IUsersRepository } from '../../repositories/IUsersRepository'
 import { ICreateUserRequestDTO } from './CreateUserDTO'
+import { EjsProvider } from '../../providers/implementations/EjsProvider'
 
 export class CreateUserUseCase {
   constructor(
@@ -18,7 +22,7 @@ export class CreateUserUseCase {
     email,
     username,
     ...userData
-  }: ICreateUserRequestDTO): Promise<User> {
+  }: ICreateUserRequestDTO): Promise<UserEntity> {
     const userAlreadyExists = await this.usersRepository.findByUniqueArgs({
       data: {
         where: {
@@ -50,6 +54,9 @@ export class CreateUserUseCase {
         ...userData
       }
     })
+
+    
+
     await this.mailProvider.sendMail({
       to: {
         name: userData.name,
@@ -60,9 +67,12 @@ export class CreateUserUseCase {
         email: 'devradar@gmail.com'
       },
       subject: 'Seja bem-vindo ao DevRadar',
-      body: '<p>Seu cadastro foi realizado com sucesso!</p>'
+      body: await EjsProvider.renderHtmlFile({ 
+        name: "CreateUserMailTemplate"
+      })
     })
 
     return user
   }
+
 }

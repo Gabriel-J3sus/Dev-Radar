@@ -25,6 +25,8 @@ const errorHandler: ErrorRequestHandler = (error, request, response, next) => {
     return response.status(err.status).send(err)
   }
 
+  console.log(error)
+
   return response.send(serverError)
 }
 
