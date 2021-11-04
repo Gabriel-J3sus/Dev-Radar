@@ -1,9 +1,9 @@
 <h1 align="center">
-  <img alt="DevRadar" src=".github/logo-full.svg"/>
+  <img alt="DevRadar" src=".github/logo-full.png"/>
 </h1>
 
 <h4 align="center">
-  🚀 In progress
+  🚧 In progress 🚧
 </h4>
 
 <p align="center">
@@ -15,14 +15,14 @@
 <br>
 
 <p align="center">
-  <img alt="DevRadar" src=".github/screens_mashup.svg" />
+  <img alt="DevRadar" src=".github/screens_mashup.png" />
 </p>
 
 ## 💻 Project
 
 DevRadar is a social media with the main objective: connect developers, promote discussions about technologies, share projects and solve issues with people who are already on that environment.
 
-## Technologies
+## 👨🏼‍💻 Technologies
 
 #### Backend
 
