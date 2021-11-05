@@ -25,7 +25,7 @@ export const AuthTemplate: React.FC<AuthTemplateProps> = ({
       <main>
         <Logo SVGfill="logo" size="4.18rem" title="DevFinder" />
 
-        <p>Encontre amigos e putas, em um só lugar.</p>
+        <p>Encontre amigos e desenvolvedores, em um só lugar.</p>
 
         <form onSubmit={formAction}>
           <h2>{title}</h2>
