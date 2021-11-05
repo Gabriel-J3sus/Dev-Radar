@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { ensureAuthentication } from '@middlewares/ensureAuthentication'
+import { ensureAuthentication } from '@middlewares/EnsureAuthentication'
 
 import { authenticateUserController } from '@useCases/AuthenticateUser'
 import { createUserController } from '@useCases/CreateUser'
