@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import * as Yup from 'yup'
-import { DevRadar_Error } from '../../errors/errors'
 
+import { DevRadar_Error } from '@errors/errors'
 import { AuthenticateUserUseCase } from './AuthenticateUserUseCase'
 
 export class AuthenticateUserController {

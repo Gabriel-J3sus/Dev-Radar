@@ -1,6 +1,6 @@
-import { GenerateTokenProvider } from '../../providers/GenerateTokenProvider'
-import { JWTRefreshTokenRepository } from '../../repositories/implementations/JWTRefreshTokenRepository'
-import { PostgresUsersRepository } from '../../repositories/implementations/PostgresUsersRepository'
+import { GenerateTokenProvider } from '@providers/GenerateTokenProvider'
+import { JWTRefreshTokenRepository } from '@repositories/implementations/JWTRefreshTokenRepository'
+import { PostgresUsersRepository } from '@repositories/implementations/PostgresUsersRepository'
 import { AuthenticateUserController } from './AuthenticateUserController'
 import { AuthenticateUserUseCase } from './AuthenticateUserUseCase'
 

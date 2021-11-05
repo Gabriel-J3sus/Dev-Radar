@@ -1,6 +1,6 @@
-import { GenerateTokenProvider } from '../../providers/GenerateTokenProvider'
-import { MailtrapMailProvider } from '../../providers/implementations/MailtrapMailProvider'
-import { PostgresUsersRepository } from '../../repositories/implementations/PostgresUsersRepository'
+import { GenerateTokenProvider } from '@providers/GenerateTokenProvider'
+import { MailtrapMailProvider } from '@providers/implementations/MailtrapMailProvider'
+import { PostgresUsersRepository } from '@repositories/implementations/PostgresUsersRepository'
 import { ForgotPasswordController } from './ForgotPasswordController'
 import { ForgotPasswordUseCase } from './ForgotPasswordUseCase'
 

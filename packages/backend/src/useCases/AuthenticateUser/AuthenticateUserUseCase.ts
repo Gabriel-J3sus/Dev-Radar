@@ -1,11 +1,10 @@
 import { compare } from 'bcryptjs'
-import { DevRadar_Error } from '../../errors/errors'
 
-import { GenerateTokenProvider } from '../../providers/GenerateTokenProvider'
+import { DevRadar_Error } from '@errors/errors'
+import { GenerateTokenProvider } from '@providers/GenerateTokenProvider'
 
-import { IAuthenticationRepository } from '../../repositories/IAuthenticationRepository'
-import { IRefreshTokenRepository } from '../../repositories/IRefreshTokenRepository'
-
+import { IAuthenticationRepository } from '@repositories/IAuthenticationRepository'
+import { IRefreshTokenRepository } from '@repositories/IRefreshTokenRepository'
 import { IAuthenticateUserRequestDTO } from './AuthenticateUserDTO'
 
 export class AuthenticateUserUseCase {

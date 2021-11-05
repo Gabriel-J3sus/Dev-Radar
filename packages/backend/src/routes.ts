@@ -1,12 +1,12 @@
 import { Router } from 'express'
-import { ensureAuthentication } from './middlewares/ensureAuthentication'
+import { ensureAuthentication } from '@middlewares/ensureAuthentication'
 
-import { authenticateUserController } from './useCases/AuthenticateUser'
-import { createUserController } from './useCases/CreateUser'
-import { forgotPasswordController } from './useCases/ForgotPassword'
-import { refreshTokenController } from './useCases/RefreshToken'
-import { updateUserController } from './useCases/UpdateUser'
-import { alterPasswordController } from './useCases/AlterPassword'
+import { authenticateUserController } from '@useCases/AuthenticateUser'
+import { createUserController } from '@useCases/CreateUser'
+import { forgotPasswordController } from '@useCases/ForgotPassword'
+import { refreshTokenController } from '@useCases/RefreshToken'
+import { updateUserController } from '@useCases/UpdateUser'
+import { alterPasswordController } from '@useCases/AlterPassword'
 
 const routes = Router()
 

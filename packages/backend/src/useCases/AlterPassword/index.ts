@@ -1,5 +1,5 @@
-import { MailtrapMailProvider } from '../../providers/implementations/MailtrapMailProvider'
-import { PostgresUsersRepository } from '../../repositories/implementations/PostgresUsersRepository'
+import { MailtrapMailProvider } from '@providers/implementations/MailtrapMailProvider'
+import { PostgresUsersRepository } from '@repositories/implementations/PostgresUsersRepository'
 import { AlterPasswordController } from './AlterPasswordController'
 import { AlterPasswordUseCase } from './AlterPasswordUseCase'
 

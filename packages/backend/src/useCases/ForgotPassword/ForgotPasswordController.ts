@@ -1,6 +1,7 @@
 import { Request, Response } from 'express'
 import * as Yup from 'yup'
-import { DevRadar_Error, Errors } from '../../errors/errors'
+
+import { DevRadar_Error } from '@errors/errors'
 import { ForgotPasswordUseCase } from './ForgotPasswordUseCase'
 
 export class ForgotPasswordController {

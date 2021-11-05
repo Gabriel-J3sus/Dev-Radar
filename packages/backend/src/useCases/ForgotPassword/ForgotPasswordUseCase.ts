@@ -1,10 +1,8 @@
-import ejs from 'ejs'
-import path from 'path'
-import { DevRadar_Error } from '../../errors/errors'
-import { GenerateTokenProvider } from '../../providers/GenerateTokenProvider'
-import { IMailProvider } from '../../providers/IMailProvider'
-import { EjsProvider } from '../../providers/implementations/EjsProvider'
-import { IUsersRepository } from '../../repositories/IUsersRepository'
+import { DevRadar_Error } from '@errors/errors'
+import { GenerateTokenProvider } from '@providers/GenerateTokenProvider'
+import { IMailProvider } from '@providers/IMailProvider'
+import { EjsProvider } from '@providers/implementations/EjsProvider'
+import { IUsersRepository } from '@repositories/IUsersRepository'
 import { IForgotPasswordDTO } from './ForgotPasswordDTO'
 
 export class ForgotPasswordUseCase {

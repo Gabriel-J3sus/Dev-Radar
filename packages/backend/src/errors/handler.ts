@@ -1,5 +1,6 @@
-import e, { ErrorRequestHandler } from 'express'
+import { ErrorRequestHandler } from 'express'
 import { ValidationError } from 'yup'
+
 import { DevRadar_Error } from './errors'
 
 interface ValidationErrors {
@@ -8,7 +9,12 @@ interface ValidationErrors {
 
 const serverError = new DevRadar_Error('SERVER_ERROR')
 
-const errorHandler: ErrorRequestHandler = (error, request, response, next) => {
+export const errorHandler: ErrorRequestHandler = (
+  error,
+  request,
+  response,
+  next
+) => {
   if (error instanceof ValidationError) {
     let errors: ValidationErrors = {}
 
@@ -29,5 +35,3 @@ const errorHandler: ErrorRequestHandler = (error, request, response, next) => {
 
   return response.send(serverError)
 }
-
-export default errorHandler

@@ -1,16 +1,14 @@
 // serve para a implementação da lógica da aplicação, não importa aonde os usuarios são armazezados etc.
 // sua única responsabilidade é criar um usuário
 
-// import { User } from '@prisma/client'
-import ejs from 'ejs'
-import path from 'path'
-import { UserEntity } from '../../entities/User'
-import { DevRadar_Error } from '../../errors/errors'
-import { IMailProvider } from '../../providers/IMailProvider'
+import { UserEntity } from '@entities/User'
+import { DevRadar_Error } from '@errors/errors'
 
-import { IUsersRepository } from '../../repositories/IUsersRepository'
+import { EjsProvider } from '@providers/implementations/EjsProvider'
+
+import { IMailProvider } from '@providers/IMailProvider'
+import { IUsersRepository } from '@repositories/IUsersRepository'
 import { ICreateUserRequestDTO } from './CreateUserDTO'
-import { EjsProvider } from '../../providers/implementations/EjsProvider'
 
 export class CreateUserUseCase {
   constructor(

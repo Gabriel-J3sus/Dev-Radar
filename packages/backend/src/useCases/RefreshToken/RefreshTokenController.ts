@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
-import { DevRadar_Error, Errors } from '../../errors/errors'
 
+import { DevRadar_Error } from '@errors/errors'
 import { RefreshTokenUseCase } from './RefreshTokenUseCase'
 
 export class RefreshTokenController {

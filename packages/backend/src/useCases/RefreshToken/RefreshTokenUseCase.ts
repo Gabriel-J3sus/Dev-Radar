@@ -1,10 +1,9 @@
 import dayjs from 'dayjs'
-import { DevRadar_Error } from '../../errors/errors'
 
-import { GenerateTokenProvider } from '../../providers/GenerateTokenProvider'
+import { DevRadar_Error } from '@errors/errors'
+import { GenerateTokenProvider } from '@providers/GenerateTokenProvider'
 
-import { IRefreshTokenRepository } from '../../repositories/IRefreshTokenRepository'
-
+import { IRefreshTokenRepository } from '@repositories/IRefreshTokenRepository'
 import { IRefreshTokenDTO } from './RefreshTokenDTO'
 
 export class RefreshTokenUseCase {

@@ -1,7 +1,7 @@
 /* eslint-disable dot-notation */
-import { UserEntityWithoutPassword } from '../../entities/User'
-import { IMailProvider } from '../../providers/IMailProvider'
-import { IUsersRepository } from '../../repositories/IUsersRepository'
+import { UserEntityWithoutPassword } from '@entities/User'
+
+import { IUsersRepository } from '@repositories/IUsersRepository'
 import { IUpdateUserRequestDTO } from './UpdateUserDTO'
 
 export class UpdateUserUseCase {
