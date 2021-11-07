@@ -1,14 +1,15 @@
-import { UserEntityWithoutPassword } from '../../entities/User'
-import { IMailProvider } from '../../providers/IMailProvider'
-import { IUsersRepository } from '../../repositories/IUsersRepository'
+import { compare, hash } from 'bcryptjs'
+
+import { DevRadar_Error } from '@errors/errors'
+import { UserEntityWithoutPassword } from '@entities/User'
+import { IUsersRepository } from '@repositories/IUsersRepository'
 import {
   IAlterPasswordBaseProps,
   IAlterPasswordRequestDTO,
   PasswordHeaders
 } from '../AlterPassword/AlterPasswordDTO'
-import { compare, hash } from 'bcryptjs'
-import { DevRadar_Error } from '../../errors/errors'
-import { EjsProvider } from '../../providers/implementations/EjsProvider'
+import { IMailProvider } from '@providers/IMailProvider'
+import { EjsProvider } from '@providers/implementations/EjsProvider'
 
 export class AlterPasswordUseCase {
   constructor(

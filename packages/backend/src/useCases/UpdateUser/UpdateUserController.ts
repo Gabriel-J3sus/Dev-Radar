@@ -1,6 +1,6 @@
 import { Response, Request } from 'express'
 
-import { DevRadar_Error } from '../../errors/errors'
+import { DevRadar_Error } from '@errors/errors'
 import { UpdateUserUseCase } from './UpdateUserUseCase'
 
 export class UpdateUserController {

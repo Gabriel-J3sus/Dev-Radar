@@ -1,5 +1,5 @@
-import { GenerateTokenProvider } from '../../providers/GenerateTokenProvider'
-import { JWTRefreshTokenRepository } from '../../repositories/implementations/JWTRefreshTokenRepository'
+import { GenerateTokenProvider } from '@providers/GenerateTokenProvider'
+import { JWTRefreshTokenRepository } from '@repositories/implementations/JWTRefreshTokenRepository'
 import { RefreshTokenController } from './RefreshTokenController'
 import { RefreshTokenUseCase } from './RefreshTokenUseCase'
 
