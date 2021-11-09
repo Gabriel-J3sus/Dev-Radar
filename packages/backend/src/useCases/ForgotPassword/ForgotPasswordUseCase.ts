@@ -24,6 +24,7 @@ export class ForgotPasswordUseCase {
     if (!userExists) {
       throw new DevRadar_Error('INVALID_REQUEST', 'User does not exists')
     }
+
     const token = this.generateTokenProvider.generator({
       userId: userExists.id,
       expiresIn: 60000 * 30 // 30 miniutes

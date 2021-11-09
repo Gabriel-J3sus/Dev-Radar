@@ -33,6 +33,7 @@ model User {
   updatedAt       DateTime    @updatedAt
   technologies    TechOnUser[]
   refresh_token   RefreshToken?
+  forgot_password_token   ForgotPasswordToken?
 
   @@map("users")
 }
@@ -55,4 +56,13 @@ model RefreshToken {
   userId        String
 
   @@map("refresh_token")
+}
+
+model ForgotPasswordToken {
+  id            String  @id @default(uuid())
+  expiresIn     Int
+  user          User    @relation(fields: [userId], references: [id])
+  userId        String
+
+  @@map("forgot_password_token")
 }
