@@ -6,12 +6,10 @@ import { ForgotPasswordUseCase } from './ForgotPasswordUseCase'
 
 const mailtrapMailProvider = new MailtrapMailProvider()
 const postgresUsersRepository = new PostgresUsersRepository()
-const generateTokenProvider = new GenerateTokenProvider()
 
 const forgotPasswordUseCase = new ForgotPasswordUseCase(
   postgresUsersRepository,
-  mailtrapMailProvider,
-  generateTokenProvider
+  mailtrapMailProvider
 )
 const forgotPasswordController = new ForgotPasswordController(
   forgotPasswordUseCase

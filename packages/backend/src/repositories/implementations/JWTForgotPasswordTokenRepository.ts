@@ -1,3 +1,6 @@
+import { v4 as uuid } from 'uuid'
+import { hash } from 'bcryptjs'
+
 import { PrismaClient } from '@prisma/client'
 import dayjs from 'dayjs'
 import { DevRadar_Error } from '../../errors/errors'
@@ -13,21 +16,21 @@ export class JWTForgotPasswordTokenRepository
   }
 
   expiration: IForgotPasswordTokenRepository['expiration'] = () => {
-    const expiresIn = dayjs().add(50, 'minute').unix()
+    const expiresIn = dayjs().add(30, 'minute').unix()
 
     return expiresIn
   }
 
   findByToken: IForgotPasswordTokenRepository['findByToken'] = async ({
-    forgot_password_token
+    token_id
   }) => {
-    const refreshToken = await this.prisma.refreshToken.findFirst({
+    const forgotPasswordToken = await this.prisma.forgotPasswordToken.findFirst({
       where: {
-        id: forgot_password_token
+        id: token_id
       }
     })
 
-    return refreshToken
+    return forgotPasswordToken
   }
 
   generateToken: IForgotPasswordTokenRepository['generateToken'] = async ({
@@ -36,14 +39,18 @@ export class JWTForgotPasswordTokenRepository
     const expiresIn = this.expiration()
 
     try {
-      const generetedRefreshToken = await this.prisma.refreshToken.create({
+      const token = uuid();
+      const hashedToken = await hash(token, 10)
+
+      const generetedForgotPasswordToken = await this.prisma.forgotPasswordToken.create({
         data: {
+          token: hashedToken,
           userId,
           expiresIn
         }
       })
 
-      return generetedRefreshToken
+      return generetedForgotPasswordToken
     } catch (err) {
       throw new DevRadar_Error(
         'INVALID_REQUEST',
@@ -56,7 +63,7 @@ export class JWTForgotPasswordTokenRepository
     userId
   }) => {
     try {
-      await this.prisma.refreshToken.deleteMany({
+      await this.prisma.forgotPasswordToken.deleteMany({
         where: {
           userId: userId
         }

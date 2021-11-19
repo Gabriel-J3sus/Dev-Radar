@@ -60,6 +60,7 @@ model RefreshToken {
 
 model ForgotPasswordToken {
   id            String  @id @default(uuid())
+  token         String  @unique
   expiresIn     Int
   user          User    @relation(fields: [userId], references: [id])
   userId        String

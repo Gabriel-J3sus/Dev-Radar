@@ -1,7 +1,7 @@
 import { DevRadar_Error } from '@errors/errors'
-import { GenerateTokenProvider } from '@providers/GenerateTokenProvider'
 import { IMailProvider } from '@providers/IMailProvider'
 import { EjsProvider } from '@providers/implementations/EjsProvider'
+import { IForgotPasswordTokenRepository } from '@repositories/IForgotPasswordTokenRepository'
 import { IUsersRepository } from '@repositories/IUsersRepository'
 import { IForgotPasswordDTO } from './ForgotPasswordDTO'
 
@@ -9,7 +9,7 @@ export class ForgotPasswordUseCase {
   constructor(
     private usersRepository: IUsersRepository,
     private mailProvider: IMailProvider,
-    private generateTokenProvider: GenerateTokenProvider
+    private forgotPasswordRepository: IForgotPasswordTokenRepository
   ) {}
 
   async execute({ email }: IForgotPasswordDTO): Promise<void> {
@@ -25,10 +25,13 @@ export class ForgotPasswordUseCase {
       throw new DevRadar_Error('INVALID_REQUEST', 'User does not exists')
     }
 
-    const token = this.generateTokenProvider.generator({
-      userId: userExists.id,
-      expiresIn: 60000 * 30 // 30 miniutes
+    //I need to receive userId, because I don't have the token so I need to fiund by user
+    // await this.forgotPasswordRepository.findByToken({ token_id: userExists. })
+
+    const { token } = await this.forgotPasswordRepository.generateToken({  
+      userId: userExists.id
     })
+     
 
     await this.mailProvider.sendMail({
       to: {

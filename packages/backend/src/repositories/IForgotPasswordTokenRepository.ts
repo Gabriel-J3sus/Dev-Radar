@@ -5,7 +5,7 @@ export interface IForgotPasswordTokenRepository extends EntityRepository {
   expiration(): number
   generateToken(Params: { userId: string }): Promise<ForgotPasswordTokenEntity>
   findByToken(Params: {
-    forgot_password_token: string
+    token_id: string
   }): Promise<ForgotPasswordTokenEntity | null>
   deleteToken(Params: { userId: string }): Promise<void>
 }
