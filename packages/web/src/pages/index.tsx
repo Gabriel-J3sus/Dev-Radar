@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 
 import { SearchIcon } from '@components/icons'
 import { Header } from '@components/sections'
-import { Card } from '@components/ui'
+import { Button, Card } from '@components/ui'
 
 import { HomeContainer, CardsWrapper } from '@styles/pages/home'
 import { Logo } from '@components/Logo'
@@ -63,9 +63,9 @@ const Home: React.FC = () => {
 
         <span>
           <input type="text" placeholder="Pesquisar por tecnologia..." />
-          <button className="search-button">
+          <Button className="search-button">
             <SearchIcon size={24} color="#FFF" />
-          </button>
+          </Button>
         </span>
       </CardsWrapper>
 

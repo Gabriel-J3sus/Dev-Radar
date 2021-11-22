@@ -57,7 +57,7 @@ export const HomeContainer = styled.section`
       margin: 0 0 0.8rem 0.8rem;
     }
   }
-  `
+`
 
 export const CardsWrapper = styled.div<{ isSearchMode: boolean }>`
   max-width: 320px;
@@ -93,7 +93,8 @@ export const CardsWrapper = styled.div<{ isSearchMode: boolean }>`
     border-radius: 20px 15px 15px 20px;
 
     input {
-      width: 75%;
+      width: 100%;
+      height: 100%;
       padding: 0.8rem 0.9rem;
 
       border: 2px solid transparent;
@@ -109,19 +110,16 @@ export const CardsWrapper = styled.div<{ isSearchMode: boolean }>`
 
     > .search-button {
       width: 25%;
+      height: 100%;
+      margin: 0;
       padding: 0.8rem 0.9rem;
 
       font-size: 0;
       border-radius: 0 15px 15px 0;
-      background: var(--secondary);
-      transition: filter transform 0.3s;
+      transition: filter 0.3s;
 
       &:hover {
         filter: brightness(0.8);
-      }
-
-      &:active {
-        transform: scale(1.02);
       }
     }
   }

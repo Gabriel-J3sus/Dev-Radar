@@ -1,24 +1,18 @@
 import React, { FormEvent } from 'react'
-import Link from 'next/link'
 
 import { Logo } from '@components/icons'
-import FormInput from '@components/ui/FormInput'
 
 import { AuthTemplateContainer } from './style'
+import { Card } from '@components/ui'
 
 interface AuthTemplateProps {
-  title: 'Logar'
-  emailInputRef?: React.MutableRefObject<HTMLInputElement>
-  passwordInputRef?: React.MutableRefObject<HTMLInputElement>
-  formAction(event: FormEvent): Promise<void>
+  title: string
+  handleSubmit(event: FormEvent): Promise<void>
 }
 
 export const AuthTemplate: React.FC<AuthTemplateProps> = ({
-  title,
-  emailInputRef,
-  passwordInputRef,
-  formAction,
-  children
+  children,
+  ...props
 }) => {
   return (
     <AuthTemplateContainer>
@@ -27,30 +21,25 @@ export const AuthTemplate: React.FC<AuthTemplateProps> = ({
 
         <p>Encontre amigos e desenvolvedores, em um só lugar.</p>
 
-        <form onSubmit={formAction}>
-          <h2>{title}</h2>
+        <form onSubmit={props.handleSubmit}>
+          <h2>{props.title}</h2>
 
-          <FormInput label="Email" inputType="email" ref={emailInputRef} />
-
-          <FormInput
-            label="Senha"
-            inputType="password"
-            ref={passwordInputRef}
-          />
-
-          <button type="submit">Entrar</button>
-
-          <p className="link">
-            Deseja criar uma conta?{' '}
-            <Link href="register">
-              <a>Clique aqui</a>
-            </Link>
-          </p>
+          {children}
         </form>
       </main>
 
       <aside>
-        <div className="grid-content">{children}</div>
+        <div className="grid-content">
+          {new Array(10).fill(
+            <Card
+              avatar="https://github.com/Gabriel-J3sus.png"
+              name="Gabriel Jesus"
+              technologies="ReactJS, NodeJS"
+              description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem hic temporibus porro, voluptas nam molestiae ea nostrum ipsum iure quo consequuntur modi explicabo totam architecto facilis neque. Possimus, iste consectetur!"
+              githubLink="#"
+            />
+          )}
+        </div>
       </aside>
     </AuthTemplateContainer>
   )

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const AuthTemplateContainer = styled.div`
+export const AuthTemplateContainer = styled.article`
   max-width: 1044px;
   width: 100%;
   display: flex;
@@ -13,29 +13,24 @@ export const AuthTemplateContainer = styled.div`
     gap: 1.5rem;
 
     > p {
-      max-width: 350px;
+      text-align: center;
       font-size: 1.125rem;
       font-weight: 700;
       line-height: 2.06rem;
-      text-align: center;
     }
 
     > form {
-      max-width: 350px;
       width: 100%;
-      height: auto;
-
-      padding: 2.5rem 1.5rem 1.25rem;
-
+      padding: 2.5em 1.5em 1.25em;
       display: flex;
       flex-direction: column;
-      align-items: center;
       gap: 0.75rem;
 
       background: var(--bgForm);
       border-radius: 15px;
 
       > h2 {
+        text-align: center;
         color: var(--title);
         line-height: 23px;
       }
@@ -60,31 +55,6 @@ export const AuthTemplateContainer = styled.div`
         }
       }
 
-      > button {
-        width: 100%;
-        height: 2.75rem;
-        margin-top: 0.3rem;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-
-        background: var(--secondary);
-        color: var(--bgForm);
-        border-radius: 7px;
-        font-weight: 700;
-        transition: filter transform 0.3s;
-
-        &:hover {
-          filter: brightness(0.8);
-        }
-
-        &:active {
-          transform: scale(1.02);
-        }
-      }
-
       .link {
         font-size: 0.9rem;
         font-weight: 500;
@@ -106,9 +76,10 @@ export const AuthTemplateContainer = styled.div`
 
   aside {
     max-width: 100vw;
-    min-height: 100vh;
+    max-height: 100vh;
     height: 100%;
     overflow-y: auto;
+    overflow-y: scroll;
 
     .grid-content {
       height: 100%;

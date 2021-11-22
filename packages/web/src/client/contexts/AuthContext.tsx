@@ -7,10 +7,11 @@ interface SignInProps {
 
 interface CreateUserProps extends SignInProps {
   name: string
-  technologies: number[]
-  githubURL: string
-  latitude: number
-  longitude: number
+  username: string
+  // technologies: number[]
+  // githubURL: string
+  // latitude: number
+  // longitude: number
 }
 
 interface AuthContextProps {
@@ -22,15 +23,7 @@ export const AuthContext = createContext({} as AuthContextProps)
 
 export function AuthContextProvider({ children }) {
   async function register({ ...props }: CreateUserProps) {
-    console.log(
-      props.email,
-      props.githubURL,
-      props.latitude,
-      props.longitude,
-      props.name,
-      props.password,
-      props.technologies
-    )
+    console.log(props.name, props.username, props.email, props.password)
   }
 
   async function signIn({ password, email }: SignInProps) {

@@ -24,7 +24,6 @@ const FormInput: React.ForwardRefRenderFunction<
               : 'password'
             : inputType
         }
-        required
         ref={ref}
         {...rest}
       />
