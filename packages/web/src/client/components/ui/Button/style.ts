@@ -15,7 +15,7 @@ export const ButtonContainer = styled.button`
   border-radius: 7px;
   border: 2px solid transparent;
   font-weight: 700;
-  transition: background 0.3s, color 0.2s, border 0.2s, filter 0.3s;
+  transition: all 0.3s;
 
   &.solid-button {
     &:hover {

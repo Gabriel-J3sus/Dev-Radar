@@ -12,11 +12,9 @@ export const AuthTemplateContainer = styled.article`
     align-items: center;
     gap: 1.5rem;
 
-    > p {
+    > strong {
       text-align: center;
       font-size: 1.125rem;
-      font-weight: 700;
-      line-height: 2.06rem;
     }
 
     > form {
@@ -32,26 +30,22 @@ export const AuthTemplateContainer = styled.article`
       > h2 {
         text-align: center;
         color: var(--title);
-        line-height: 23px;
       }
 
-      .local-inputs {
+      > .input-container {
+        width: 100%;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
+        position: relative;
 
-        .input-wrapper {
-          width: 100%;
-          display: flex;
-          align-items: center;
-          gap: 1.8rem;
+        label {
+          font-weight: 700;
+          color: var(--tertiary);
+          margin-bottom: 0.3rem;
         }
 
-        p {
-          font-size: 0.75rem;
-          font-weight: 500;
-          color: var(--secondary);
+        input {
+          padding: 0.3rem 0.5rem;
         }
       }
 
@@ -82,8 +76,7 @@ export const AuthTemplateContainer = styled.article`
     overflow-y: scroll;
 
     .grid-content {
-      height: 100%;
-      width: 100%;
+      flex: 1;
       display: grid;
       grid-gap: 1.25rem;
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import { CSSProperties } from 'styled-components'
 
 export interface NormalInputProps
   extends React.DetailedHTMLProps<
@@ -16,4 +17,7 @@ export interface TextareaInputProps
   customType: 'textArea'
 }
 
-export type CustomInputType = NormalInputProps | TextareaInputProps
+export type CustomInputType = (NormalInputProps | TextareaInputProps) & {
+  type: string
+  CSS?: CSSProperties
+}

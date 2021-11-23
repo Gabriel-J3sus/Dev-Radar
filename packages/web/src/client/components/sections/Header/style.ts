@@ -13,18 +13,12 @@ export const HeaderContainer = styled.header`
   justify-content: center;
   gap: 0.5rem;
 
-  button {
+  .drop-shadow {
     width: 3rem;
     height: 3rem;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: var(--secondary);
     opacity: 0.7;
     border-radius: 15px;
-    transition: opacity 0.3s;
 
     &:hover {
       opacity: 1;

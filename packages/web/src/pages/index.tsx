@@ -4,10 +4,11 @@ import dynamic from 'next/dynamic'
 
 import { SearchIcon } from '@components/icons'
 import { Header } from '@components/sections'
-import { Button, Card } from '@components/ui'
+import { Button, Card, CustomInput } from '@components/ui'
 
 import { HomeContainer, CardsWrapper } from '@styles/pages/home'
 import { Logo } from '@components/Logo'
+import Head from 'next/head'
 
 const Home: React.FC = () => {
   const { reload } = useRouter()
@@ -44,6 +45,9 @@ const Home: React.FC = () => {
 
   return (
     <HomeContainer>
+      <Head>
+        <title>Mapa | DevRadar</title>
+      </Head>
       <Header search={isSearchOpen} setSearch={setIsSearchOpen} />
 
       <MapWithoutSSR coordinates={coordenates} />
@@ -62,7 +66,12 @@ const Home: React.FC = () => {
         </div>
 
         <span>
-          <input type="text" placeholder="Pesquisar por tecnologia..." />
+          <CustomInput
+            customType="normal"
+            className="default"
+            type="text"
+            placeholder="Pesquisar por tecnologia..."
+          />
           <Button className="solid-button">
             <SearchIcon size={24} color="#FFF" />
           </Button>

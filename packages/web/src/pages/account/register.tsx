@@ -1,12 +1,13 @@
 import React, { FormEvent, useRef } from 'react'
+import { NextPage } from 'next'
 import Link from 'next/link'
+import Head from 'next/head'
 
 import { Container } from '@styles/pages/register'
-import FormInput from '@components/ui/FormInput'
 import { useAuth } from '@hooks/useAuth'
-import { NextPage } from 'next'
+
 import { AuthTemplate } from '@components/sections'
-import { Button } from '@components/ui'
+import { Button, CustomInput, PasswordInput } from '@components/ui'
 
 const Register: NextPage = () => {
   const { register } = useAuth()
@@ -28,30 +29,53 @@ const Register: NextPage = () => {
 
   return (
     <Container>
+      <Head>
+        <title>Cadastro | DevRadar</title>
+      </Head>
       <AuthTemplate title="Cadastrar" handleSubmit={handleSignUp}>
-        <FormInput label="Nome" inputType="text" ref={nameRef} required />
+        <span className="input-container">
+          <label>Nome</label>
+          <CustomInput
+            customType="normal"
+            className="formInput"
+            type="text"
+            ref={nameRef}
+            required
+          />
+        </span>
 
-        <FormInput
-          label="Nome do usuário"
-          inputType="text"
-          ref={usernameRef}
-          required
-        />
+        <span className="input-container">
+          <label>Nome do usuário</label>
+          <CustomInput
+            customType="normal"
+            className="formInput"
+            type="text"
+            ref={usernameRef}
+            required
+          />
+        </span>
 
-        <FormInput label="E-mail" inputType="email" ref={emailRef} required />
+        <span className="input-container">
+          <label>E-mail</label>
+          <CustomInput
+            customType="normal"
+            className="formInput"
+            type="text"
+            ref={emailRef}
+            required
+          />
+        </span>
 
-        <FormInput
-          label="Sennha"
-          inputType="password"
-          ref={passwordRef}
-          required
-        />
+        <span className="input-container">
+          <label>Senha</label>
+          <PasswordInput ref={passwordRef} />
+        </span>
 
         <Button type="submit">Cadastrar</Button>
 
         <p className="link">
           Já tem uma conta?{' '}
-          <Link href="register">
+          <Link href="signin">
             <a>Clique aqui</a>
           </Link>
         </p>

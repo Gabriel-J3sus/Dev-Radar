@@ -1,43 +1,48 @@
 import React, { FormEvent, useRef } from 'react'
+import Link from 'next/link'
+import Head from 'next/head'
 
 import { AuthTemplate } from '@components/sections'
 import { Container } from '@styles/pages/signin'
 import { useAuth } from '@hooks/useAuth'
-import FormInput from '@components/ui/FormInput'
-import Link from 'next/link'
-import { Button } from '@components/ui'
+import { Button, CustomInput, PasswordInput } from '@components/ui'
 
 const SignIn: React.FC = () => {
   const { signIn } = useAuth()
 
-  const emailInputRef = useRef<HTMLInputElement>(null)
-  const passwordInputRef = useRef<HTMLInputElement>(null)
+  const emailRef = useRef<HTMLInputElement>(null)
+  const passwordRef = useRef<HTMLInputElement>(null)
 
   async function handleSignIn(event: FormEvent) {
     event.preventDefault()
 
     await signIn({
-      email: emailInputRef.current?.value,
-      password: passwordInputRef.current?.value
+      email: emailRef.current?.value,
+      password: passwordRef.current?.value
     })
   }
 
   return (
     <Container>
+      <Head>
+        <title>Login | DevRadar</title>
+      </Head>
       <AuthTemplate title="Logar" handleSubmit={handleSignIn}>
-        <FormInput
-          label="E-mail"
-          inputType="email"
-          ref={emailInputRef}
-          required
-        />
+        <span className="input-container">
+          <label>E-mail</label>
+          <CustomInput
+            customType="normal"
+            className="formInput"
+            type="email"
+            ref={emailRef}
+            required
+          />
+        </span>
 
-        <FormInput
-          label="Senha"
-          inputType="password"
-          ref={passwordInputRef}
-          required
-        />
+        <span className="input-container">
+          <label>Senha</label>
+          <PasswordInput ref={passwordRef} />
+        </span>
 
         <Button type="submit">Entrar</Button>
 

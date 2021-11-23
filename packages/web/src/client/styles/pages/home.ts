@@ -92,22 +92,6 @@ export const CardsWrapper = styled.div<{ isSearchMode: boolean }>`
     box-shadow: -1px 3px 17px 0px #a789ff;
     border-radius: 20px 15px 15px 20px;
 
-    input {
-      width: 100%;
-      height: 100%;
-      padding: 0.8rem 0.9rem;
-
-      border: 2px solid transparent;
-      border-radius: 20px 0 0 20px;
-      background: var(--bgForm);
-      outline: none;
-      transition: border-color 0.2s ease-in-out;
-
-      &:focus {
-        border-color: var(--secondary);
-      }
-    }
-
     > .solid-button {
       width: 25%;
       height: 100%;
