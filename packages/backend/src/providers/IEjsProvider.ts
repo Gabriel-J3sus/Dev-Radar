@@ -10,7 +10,7 @@ interface CreateUserMailTemplate extends baseTemplate {
 interface ForgotPasswordMailTemplate extends baseTemplate {
   name: 'ForgotPasswordMailTemplate'
   args?: {
-    pinto: string
+    token: string
   }
 }
 

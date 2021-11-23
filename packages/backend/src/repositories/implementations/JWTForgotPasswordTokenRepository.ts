@@ -21,12 +21,12 @@ export class JWTForgotPasswordTokenRepository
     return expiresIn
   }
 
-  findByToken: IForgotPasswordTokenRepository['findByToken'] = async ({
-    token_id
+  findToken: IForgotPasswordTokenRepository['findToken'] = async ({
+    userId
   }) => {
     const forgotPasswordToken = await this.prisma.forgotPasswordToken.findFirst({
       where: {
-        id: token_id
+        userId: userId
       }
     })
 

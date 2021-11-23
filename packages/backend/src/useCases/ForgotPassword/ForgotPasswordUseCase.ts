@@ -12,7 +12,7 @@ export class ForgotPasswordUseCase {
     private forgotPasswordRepository: IForgotPasswordTokenRepository
   ) {}
 
-  async execute({ email }: IForgotPasswordDTO): Promise<void> {
+  async execute({ email }: IForgotPasswordDTO): Promise<string> {
     const userExists = await this.usersRepository.findByUniqueArgs({
       data: {
         where: {
@@ -25,13 +25,19 @@ export class ForgotPasswordUseCase {
       throw new DevRadar_Error('INVALID_REQUEST', 'User does not exists')
     }
 
-    //I need to receive userId, because I don't have the token so I need to fiund by user
-    // await this.forgotPasswordRepository.findByToken({ token_id: userExists. })
-
-    const { token } = await this.forgotPasswordRepository.generateToken({  
+    const tokenExists = await this.forgotPasswordRepository.findToken({
       userId: userExists.id
     })
-     
+
+    if (tokenExists) {
+      await this.forgotPasswordRepository.deleteToken({
+        userId: userExists.id
+      })
+    }
+
+    const { token } = await this.forgotPasswordRepository.generateToken({
+      userId: userExists.id
+    })
 
     await this.mailProvider.sendMail({
       to: {
@@ -44,8 +50,11 @@ export class ForgotPasswordUseCase {
       },
       subject: 'Troca de senha',
       body: await EjsProvider.renderHtmlFile({
-        name: 'ForgotPasswordMailTemplate'
+        name: 'ForgotPasswordMailTemplate',
+        args: { token }
       })
     })
+
+    return token;
   }
 }

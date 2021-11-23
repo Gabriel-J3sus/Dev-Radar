@@ -108,21 +108,16 @@ export const CardsWrapper = styled.div<{ isSearchMode: boolean }>`
       }
     }
 
-    > .search-button {
+    > .solid-button {
       width: 25%;
       height: 100%;
       margin: 0;
       padding: 0.8rem 0.9rem;
 
-      font-size: 0;
       border-radius: 0 15px 15px 0;
-      transition: filter 0.3s;
-
-      &:hover {
-        filter: brightness(0.8);
-      }
     }
   }
+
   @media (max-width: 550px) {
     max-height: 85vh;
 

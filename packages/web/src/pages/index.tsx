@@ -63,7 +63,7 @@ const Home: React.FC = () => {
 
         <span>
           <input type="text" placeholder="Pesquisar por tecnologia..." />
-          <Button className="search-button">
+          <Button className="solid-button">
             <SearchIcon size={24} color="#FFF" />
           </Button>
         </span>
