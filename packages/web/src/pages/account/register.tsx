@@ -75,7 +75,7 @@ const Register: NextPage = () => {
 
         <p className="link">
           Já tem uma conta?{' '}
-          <Link href="signin">
+          <Link href="/account/signin">
             <a>Clique aqui</a>
           </Link>
         </p>

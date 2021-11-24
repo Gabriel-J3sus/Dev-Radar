@@ -1,5 +1,6 @@
 import { AppProps } from 'next/app'
 import { ThemeProvider } from 'styled-components'
+import { Toaster } from 'react-hot-toast'
 
 import { AuthContextProvider } from '@contexts/AuthContext'
 
@@ -13,6 +14,8 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
         <GlobalStyle />
 
         <Component {...pageProps} />
+
+        <Toaster />
       </ThemeProvider>
     </AuthContextProvider>
   )

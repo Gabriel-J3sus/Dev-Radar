@@ -28,6 +28,7 @@
       "@api/*": ["./src/pages/api/*"],
       "@utils/*": ["./src/utils/*"],
       "@data/*": ["./src/data/*"],
+      "@services/*": ["./src/services/*"]
     }
   },
   "include": [

@@ -28,6 +28,7 @@ module.exports = {
     '@next/next/no-img-element': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'camelcase': 'off',
+    'react/display-name': 'off',
 
     "no-useless-constructor": 0,
     'no-use-before-define': 0,
@@ -35,5 +36,6 @@ module.exports = {
     'prefer-const': 0,
     'multiline-ternary': 0,
     '@typescript-eslint/no-unused-vars': 0,
+
   }
 }

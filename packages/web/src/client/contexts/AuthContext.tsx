@@ -1,4 +1,7 @@
+import { api } from '@services/api'
+import { useRouter } from 'next/dist/client/router'
 import { createContext } from 'react'
+import toast from 'react-hot-toast'
 
 interface SignInProps {
   email: string
@@ -22,8 +25,24 @@ interface AuthContextProps {
 export const AuthContext = createContext({} as AuthContextProps)
 
 export function AuthContextProvider({ children }) {
+  const router = useRouter()
+
   async function register({ ...props }: CreateUserProps) {
-    console.log(props.name, props.username, props.email, props.password)
+    const createUser = async () =>
+      await api.post('/signup', {
+        name: props.name,
+        username: props.username,
+        email: props.email,
+        password: props.password
+      })
+
+    await toast.promise(createUser(), {
+      loading: 'Salvando...',
+      success: <b>Seja bem-vindo.</b>,
+      error: <b>Não foi possível criar usuário.</b>
+    })
+
+    router.push('/')
   }
 
   async function signIn({ password, email }: SignInProps) {
