@@ -6,7 +6,7 @@ import { forgotPasswordController } from '@useCases/ForgotPassword'
 import { refreshTokenController } from '@useCases/RefreshToken'
 import { updateUserController } from '@useCases/UpdateUser'
 import { alterPasswordController } from '@useCases/AlterPassword'
-import { ensureAuthentication } from '@middlewares/ensureAuthentication'
+import { ensureAuthentication } from '@middlewares/EnsureAuthentication'
 
 const routes = Router()
 
@@ -31,5 +31,7 @@ routes.put('/update-user', ensureAuthentication, (request, response) =>
 routes.put('/alter-password', ensureAuthentication, (request, response) =>
   alterPasswordController.handle(request, response)
 )
+
+routes.get('/', (request, response) => response.send('ok'))
 
 export { routes }
