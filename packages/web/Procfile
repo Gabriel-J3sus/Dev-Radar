@@ -1,1 +1,2 @@
+web: yarn add --dev typescript
 web: yarn build
