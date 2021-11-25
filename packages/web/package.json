@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "start": "next start",
-    "heroku-postbuild": "yarn ../../ && next build"
+    "heroku-postbuild": "npm install --prefix ../../ && next build"
   },
   "dependencies": {
     "axios": "^0.24.0",
