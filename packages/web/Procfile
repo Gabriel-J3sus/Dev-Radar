@@ -1,2 +1,3 @@
-web: yarn add --dev typescript
+web: cd ../../
+web: yarn
 web: yarn build
