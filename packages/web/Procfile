@@ -1,3 +1,2 @@
-web: cd ../../
-web: yarn
+web: cd ../../ && yarn
 web: yarn build
