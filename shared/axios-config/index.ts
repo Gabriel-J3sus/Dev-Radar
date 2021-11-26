@@ -9,3 +9,5 @@ export function getAPIClient(ctx?: any) {
 
   return api
 }
+
+export const api = getAPIClient()

@@ -9,7 +9,8 @@
   },
   "workspaces": {
     "packages": [
-      "packages/*"
+      "packages/*",
+      "shared/*"
     ]
   },
   "husky": {
@@ -23,7 +24,6 @@
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
     "@dev-radar/eslint-config": "*",
-    "@types/axios": "^0.14.0",
     "@types/jest": "^27.0.2",
     "commitizen": "^4.2.4",
     "husky": "^7.0.2",
@@ -36,7 +36,5 @@
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
-  "dependencies": {
-    "axios": "^0.24.0"
-  }
+  "dependencies": {}
 }

@@ -1,4 +1,4 @@
-import { api } from '@services/api'
+import { api } from '@dev-radar/axios-config'
 import { useRouter } from 'next/dist/client/router'
 import { createContext } from 'react'
 import toast from 'react-hot-toast'
