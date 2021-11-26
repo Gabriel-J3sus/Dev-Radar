@@ -1,2 +1,1 @@
-backend: yarn prisma migrate dev
-backend: yarn dev
+web: yarn prisma migrate dev
