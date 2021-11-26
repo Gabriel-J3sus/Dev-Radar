@@ -1,1 +1,1 @@
-web: yarn prisma migrate dev
+web: npx prisma migrate dev
