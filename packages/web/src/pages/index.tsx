@@ -23,7 +23,7 @@ const Home: React.FC = () => {
 
   const MapWithoutSSR = useMemo(
     () => dynamic(() => import('src/client/components/Map'), { ssr: false }),
-    [latitude, longitude]
+    []
   )
 
   useEffect(() => {
