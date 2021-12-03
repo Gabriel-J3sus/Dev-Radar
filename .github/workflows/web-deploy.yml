@@ -1,4 +1,4 @@
-name: Build & Deploy (Production)
+name: Build & Deploy DevRadar (Production)
 
 on:
   push:
@@ -30,6 +30,12 @@ jobs:
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} web
+
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14.x
 
       - name: Deploy
         run: echo "Deployed"
