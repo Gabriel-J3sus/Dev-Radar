@@ -26,12 +26,8 @@ jobs:
         with:
           node-version: 14.x
 
-      - name: Installing shared dependencies
-        working-directory: ./shared/axios-config
-        run: npm install
-
-      - name: Installing web dependencies
-        working-directory: ./packages/web
+      - name: Installing dependencies
+        working-directory: ./
         run: npm install
 
       - name: Build and push
