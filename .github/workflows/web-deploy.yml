@@ -13,8 +13,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Login to Heroku Container registry
+      - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Login to Heroku Container registry
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: heroku container:login
@@ -22,7 +24,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 14.x
+          node-version: 12.x
 
       - name: Deploy
         run: echo "Deployed"
