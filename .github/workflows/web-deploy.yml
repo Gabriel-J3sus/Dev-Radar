@@ -2,8 +2,7 @@ name: Build & Deploy (Production)
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
     paths:
       - 'packages/web/**'
       - 'shared/axios-config/**'
@@ -14,9 +13,8 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          path: main
+        uses: actions/checkout@v1
+
       - name: Login to Heroku Container registry
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
