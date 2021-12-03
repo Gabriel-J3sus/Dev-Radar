@@ -2,11 +2,8 @@ name: Build & Deploy (Production)
 
 on:
   push:
-    branches:
-      - main
-    paths:
-      - 'packages/web/**'
-      - 'shared/axios-config/**'
+    branches: [ main ]
+    paths: ['packages/web/**', 'shared/axios-config/**']
 
 jobs:
   deploy:
