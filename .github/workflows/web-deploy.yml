@@ -1,0 +1,28 @@
+name: Build & Deploy (Production)
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'packages/web/**'
+      - 'shared/axios-config/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Login to Heroku Container registry
+        uses: actions/checkout@v2
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku container:login
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - name: Deploy
+        run: echo "Deployed"
