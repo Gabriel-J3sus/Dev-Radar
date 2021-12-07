@@ -29,12 +29,7 @@ export function AuthContextProvider({ children }) {
 
   async function register({ ...props }: CreateUserProps) {
     const createUser = async () =>
-      await api.post('/signup', {
-        name: props.name,
-        username: props.username,
-        email: props.email,
-        password: props.password
-      })
+      await api.post('/signup', props)
 
     await toast.promise(createUser(), {
       loading: 'Salvando...',

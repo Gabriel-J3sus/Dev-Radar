@@ -5,14 +5,8 @@ import { Logo } from '@components/icons'
 import { AuthTemplateContainer } from './style'
 import { Card } from '@components/ui'
 
-interface AuthTemplateProps {
-  title: string
-  handleSubmit(event: FormEvent): Promise<void>
-}
-
-export const AuthTemplate: React.FC<AuthTemplateProps> = ({
-  children,
-  ...props
+export const AuthTemplate: React.FC = ({
+  children
 }) => {
   return (
     <AuthTemplateContainer>
@@ -21,11 +15,7 @@ export const AuthTemplate: React.FC<AuthTemplateProps> = ({
 
         <strong>Encontre amigos e desenvolvedores, em um só lugar.</strong>
 
-        <form onSubmit={props.handleSubmit}>
-          <h2>{props.title}</h2>
-
-          {children}
-        </form>
+        {children}
       </main>
 
       <aside>

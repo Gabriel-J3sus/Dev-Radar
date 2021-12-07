@@ -1,49 +1,33 @@
-import React, { FormEvent, ReactElement, useEffect, useRef } from 'react'
+import React, { FormEvent, ReactElement } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 
 import { AuthTemplate } from '@components/sections'
 import { Container } from '@styles/pages/signin'
-import { Button, CustomInput, UserForm } from '@components/ui'
+import { Button, UserForm } from '@components/ui'
 import { NextPageWithLayout } from '@pages/_app'
 
-
 const ForgotPassword: NextPageWithLayout = () => {
-  const emailRef = useRef<HTMLInputElement>(null)
-
-  async function handleForgotPassword(event: FormEvent) {
+  async function handleResetPassword(event: FormEvent) {
     event.preventDefault()
-
-    console.log(emailRef.current.value)
   }
-
-  useEffect(() => {
-    if(typeof window !== undefined){
-      const url = new URL(window.location.href)
-
-      const params = url.searchParams.get('email')
-      
-      if(params){
-        emailRef.current.value = params
-      }
-    }
-  },[])
 
   return (
     <>
       <Head>
         <title>Esqueci minha senha | DevRadar</title>
       </Head>
-        <UserForm title="Esqueceu sua senha?" handleSubmit={handleForgotPassword}>
+      
+        <UserForm title="Resetae senha" handleSubmit={handleResetPassword}>
           <span className="input-container">
             <label>E-mail</label>
-            <CustomInput
+            {/* <CustomInput
               customType="normal"
               className="formInput"
               type="email"
               ref={emailRef}
               required
-            />
+            /> */}
           </span>
 
           <Button type="submit">Enviar solicitação</Button>
@@ -55,6 +39,7 @@ const ForgotPassword: NextPageWithLayout = () => {
             </Link>
           </p>
         </UserForm>
+      
     </>
   )
 }
