@@ -1,4 +1,4 @@
-import React, { FormEvent, ReactElement, useRef, useState } from 'react'
+import React, { FormEvent, ReactElement, useRef } from 'react'
 import { NextPage } from 'next'
 import Link from 'next/link'
 import Head from 'next/head'
@@ -8,18 +8,20 @@ import { Container } from '@styles/pages/signin'
 import { useAuth } from '@hooks/useAuth'
 import { Button, CustomInput, PasswordInput } from '@components/ui'
 import { NextPageWithLayout } from '@pages/_app'
+import { useRouter } from 'next/dist/client/router'
 
-const SignIn: NextPageWithLayout = () => {
+const ForgotPassword: NextPageWithLayout = () => {
+  const router = useRouter()
   const { signIn } = useAuth()
-
-  const [email, setEmail] = useState('')
+  console.log(router.query)
+  const emailRef = useRef<HTMLInputElement>(null)
   const passwordRef = useRef<HTMLInputElement>(null)
 
   async function handleSignIn(event: FormEvent) {
     event.preventDefault()
 
     await signIn({
-      email,
+      email: emailRef.current?.value,
       password: passwordRef.current?.value
     })
   }
@@ -27,39 +29,25 @@ const SignIn: NextPageWithLayout = () => {
   return (
     <>
       <Head>
-        <title>Login | DevRadar</title>
+        <title>Esqueci minha senha | DevRadar</title>
       </Head>
-      <AuthTemplate title="Logar" handleSubmit={handleSignIn}>
+      <AuthTemplate title="Esqueceu sua senha?" handleSubmit={handleSignIn}>
         <span className="input-container">
           <label>E-mail</label>
           <CustomInput
             customType="normal"
             className="formInput"
             type="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
+            ref={emailRef}
             required
           />
         </span>
 
-        <span className="input-container">
-          <label>Senha</label>
-          <PasswordInput ref={passwordRef} />
-        </span>
-        <p className="link" style={{ alignSelf: 'self-start' }}>
-          <Link
-            href="forgot-password"
-            as={{ query: { email }, pathname: 'forgot-password' }}
-          >
-            <a style={{ textDecoration: 'none' }}>Esqueceu sua senha?</a>
-          </Link>
-        </p>
-
-        <Button type="submit">Entrar</Button>
+        <Button type="submit">Enviar solicitação</Button>
 
         <p className="link">
-          Deseja criar uma conta?{' '}
-          <Link href="register">
+          Lembrou sua senha?{' '}
+          <Link href="signin">
             <a>Clique aqui</a>
           </Link>
         </p>
@@ -68,8 +56,8 @@ const SignIn: NextPageWithLayout = () => {
   )
 }
 
-SignIn.getLayout = (page: ReactElement) => {
+ForgotPassword.getLayout = (page: ReactElement) => {
   return <Container>{page}</Container>
 }
 
-export default SignIn
+export default ForgotPassword

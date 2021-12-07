@@ -53,7 +53,7 @@ const Home: React.FC = () => {
       <MapWithoutSSR coordinates={coordenates} />
 
       <CardsWrapper isSearchMode={isSearchOpen}>
-        {/* <div className="content">
+        <div className="content">
           {Array(10).fill(
             <Card
               avatar="https://github.com/Gabriel-J3sus.png"
@@ -63,14 +63,14 @@ const Home: React.FC = () => {
               technologies="ReactJS"
             />
           )}
-        </div> */}
+        </div>
 
         <span>
           <CustomInput
             customType="normal"
             className="default"
             type="text"
-            placeholder="Pesquisar por tecnologia..."
+            placeholder="Pesquisar"
           />
           <Button className="solid-button">
             <SearchIcon size={24} color="#FFF" />

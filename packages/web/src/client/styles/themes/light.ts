@@ -1,5 +1,3 @@
-import { DefaultTheme } from 'styled-components'
-
 export const light = {
   primary: '#666666',
   secondary: '#714cde',

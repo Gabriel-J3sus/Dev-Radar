@@ -30,6 +30,7 @@ export const AuthTemplateContainer = styled.article`
       > h2 {
         text-align: center;
         color: var(--title);
+        margin-bottom: 0.75rem;
       }
 
       > .input-container {
@@ -47,6 +48,10 @@ export const AuthTemplateContainer = styled.article`
         input {
           padding: 0.3rem 0.5rem;
         }
+      }
+
+      > button {
+        margin-top: 1rem;
       }
 
       .link {
