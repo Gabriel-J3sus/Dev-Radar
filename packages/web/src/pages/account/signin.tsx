@@ -29,43 +29,43 @@ const SignIn: NextPageWithLayout = () => {
       <Head>
         <title>Login | DevRadar</title>
       </Head>
-      
-        <UserForm title="Login" handleSubmit={handleSignIn}>
-          <span className="input-container">
-            <label>E-mail</label>
-            <CustomInput
-              customType="normal"
-              className="formInput"
-              type="email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              required
-            />
-          </span>
 
-          <span className="input-container">
-            <label>Senha</label>
-            <PasswordInput ref={passwordRef} />
-          </span>
+      <UserForm title="Login" handleSubmit={handleSignIn}>
+        <span className="input-container">
+          <label>E-mail</label>
+          <CustomInput
+            customType="normal"
+            className="formInput"
+            type="email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            required
+          />
+        </span>
 
-          <p className="link" style={{ alignSelf: 'self-start' }}>
-            <Link
-              href="forgot-password"
-              as={{ query: { email }, pathname: 'forgot-password'  }}
-            >
-              <a style={{ textDecoration: 'none' }}>Esqueceu sua senha?</a>
-            </Link>
-          </p>
+        <span className="input-container">
+          <label>Senha</label>
+          <PasswordInput ref={passwordRef} />
+        </span>
 
-          <Button type="submit">Entrar</Button>
+        <p className="link" style={{ alignSelf: 'self-start' }}>
+          <Link
+            href="forgot-password"
+            as={{ query: { email }, pathname: 'forgot-password' }}
+          >
+            <a style={{ textDecoration: 'none' }}>Esqueceu sua senha?</a>
+          </Link>
+        </p>
 
-          <p className="link">
-            Deseja criar uma conta?{' '}
-            <Link href="register">
-              <a>Clique aqui</a>
-            </Link>
-          </p>
-        </UserForm>
+        <Button type="submit">Entrar</Button>
+
+        <p className="link">
+          Deseja criar uma conta?{' '}
+          <Link href="register">
+            <a>Cadastrar</a>
+          </Link>
+        </p>
+      </UserForm>
     </>
   )
 }
@@ -73,9 +73,7 @@ const SignIn: NextPageWithLayout = () => {
 SignIn.getLayout = (page: ReactElement) => {
   return (
     <Container>
-      <AuthTemplate>
-        {page}
-      </AuthTemplate>
+      <AuthTemplate>{page}</AuthTemplate>
     </Container>
   )
 }

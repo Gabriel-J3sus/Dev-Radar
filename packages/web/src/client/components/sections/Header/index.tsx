@@ -14,7 +14,10 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ search, setSearch, CSS }) => {
   return (
     <HeaderContainer style={CSS}>
-      <Button className="solid-button drop-shadow">
+      <Button
+        className="solid-button drop-shadow"
+        style={{ transform: 'scale(0.9)' }}
+      >
         <MessageOutlineIcon size={28} color="#FFF" />
       </Button>
       <Button
@@ -24,7 +27,10 @@ export const Header: React.FC<HeaderProps> = ({ search, setSearch, CSS }) => {
       >
         <SearchIcon size={24} color="#FFF" />
       </Button>
-      <Button className="solid-button drop-shadow">
+      <Button
+        className="solid-button drop-shadow"
+        style={{ transform: 'scale(0.9)' }}
+      >
         <LogOutIcon size={28} fill="#FFF" />
       </Button>
     </HeaderContainer>

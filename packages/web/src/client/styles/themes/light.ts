@@ -5,7 +5,7 @@ export const light = {
   title: '#333333',
   detail: '#999999',
   bg: '#E5E6F0',
-  border: '#EEEEEE',
+  border: '#afafaf',
   bgForm: '#fff',
   logo: '#8257e5'
 }

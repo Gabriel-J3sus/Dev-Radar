@@ -29,6 +29,7 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'camelcase': 'off',
     'react/display-name': 'off',
+    'react-hooks/rules-of-hooks': 'off',
 
     "no-useless-constructor": 0,
     'no-use-before-define': 0,

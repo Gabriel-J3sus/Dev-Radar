@@ -5,13 +5,11 @@ import { Logo } from '@components/icons'
 import { AuthTemplateContainer } from './style'
 import { Card } from '@components/ui'
 
-export const AuthTemplate: React.FC = ({
-  children
-}) => {
+export const AuthTemplate: React.FC = ({ children }) => {
   return (
     <AuthTemplateContainer>
       <main>
-        <Logo SVGfill="logo" size="4.18rem" title="DevFinder" />
+        <Logo SVGfill="logo" size="4.18rem" title="DevRadar" />
 
         <strong>Encontre amigos e desenvolvedores, em um só lugar.</strong>
 

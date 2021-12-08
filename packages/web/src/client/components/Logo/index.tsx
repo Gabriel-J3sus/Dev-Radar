@@ -7,7 +7,12 @@ interface LogoProps {
   size: string | number
 }
 
-export const Logo: React.FC<LogoProps> = ({ SVGfill, title, titleColor, size }) => {
+export const Logo: React.FC<LogoProps> = ({
+  SVGfill,
+  title,
+  titleColor,
+  size
+}) => {
   return (
     <LogoContainer titleColor={titleColor}>
       <LogoSVG

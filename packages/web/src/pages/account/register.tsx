@@ -7,9 +7,8 @@ import { Container } from '@styles/pages/register'
 import { useAuth } from '@hooks/useAuth'
 
 import { AuthTemplate } from '@components/sections'
-import { Button, CustomInput, PasswordInput } from '@components/ui'
+import { Button, CustomInput, PasswordInput, UserForm } from '@components/ui'
 import { NextPageWithLayout } from '@pages/_app'
-import { UserForm } from '@components/ui'
 
 const Register: NextPageWithLayout = () => {
   const { register } = useAuth()
@@ -34,54 +33,54 @@ const Register: NextPageWithLayout = () => {
       <Head>
         <title>Cadastro | DevRadar</title>
       </Head>
-        <UserForm title="Cadastrar" handleSubmit={handleSignUp}>
-          <span className="input-container">
-            <label>Nome</label>
-            <CustomInput
-              customType="normal"
-              className="formInput"
-              type="text"
-              ref={nameRef}
-              required
-            />
-          </span>
+      <UserForm title="Cadastrar" handleSubmit={handleSignUp}>
+        <span className="input-container">
+          <label>Nome</label>
+          <CustomInput
+            customType="normal"
+            className="formInput"
+            type="text"
+            ref={nameRef}
+            required
+          />
+        </span>
 
-          <span className="input-container">
-            <label>Nome do usuário</label>
-            <CustomInput
-              customType="normal"
-              className="formInput"
-              type="text"
-              ref={usernameRef}
-              required
-            />
-          </span>
+        <span className="input-container">
+          <label>Nome do usuário</label>
+          <CustomInput
+            customType="normal"
+            className="formInput"
+            type="text"
+            ref={usernameRef}
+            required
+          />
+        </span>
 
-          <span className="input-container">
-            <label>E-mail</label>
-            <CustomInput
-              customType="normal"
-              className="formInput"
-              type="text"
-              ref={emailRef}
-              required
-            />
-          </span>
+        <span className="input-container">
+          <label>E-mail</label>
+          <CustomInput
+            customType="normal"
+            className="formInput"
+            type="text"
+            ref={emailRef}
+            required
+          />
+        </span>
 
-          <span className="input-container">
-            <label>Senha</label>
-            <PasswordInput ref={passwordRef} />
-          </span>
+        <span className="input-container">
+          <label>Senha</label>
+          <PasswordInput ref={passwordRef} />
+        </span>
 
-          <Button type="submit">Cadastrar</Button>
+        <Button type="submit">Cadastrar</Button>
 
-          <p className="link">
-            Já tem uma conta?{' '}
-            <Link href="/account/signin">
-              <a>Clique aqui</a>
-            </Link>
-          </p>
-        </UserForm>
+        <p className="link">
+          Já tem uma conta?{' '}
+          <Link href="/account/signin">
+            <a>Entrar</a>
+          </Link>
+        </p>
+      </UserForm>
     </>
   )
 }
@@ -89,9 +88,7 @@ const Register: NextPageWithLayout = () => {
 Register.getLayout = (page: ReactElement) => {
   return (
     <Container>
-      <AuthTemplate>
-        {page}
-      </AuthTemplate>
+      <AuthTemplate>{page}</AuthTemplate>
     </Container>
   )
 }

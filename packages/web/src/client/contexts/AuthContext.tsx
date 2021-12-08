@@ -28,8 +28,7 @@ export function AuthContextProvider({ children }) {
   const router = useRouter()
 
   async function register({ ...props }: CreateUserProps) {
-    const createUser = async () =>
-      await api.post('/signup', props)
+    const createUser = async () => await api.post('/signup', props)
 
     await toast.promise(createUser(), {
       loading: 'Salvando...',
