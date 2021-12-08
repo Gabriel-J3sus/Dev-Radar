@@ -11,3 +11,4 @@ export {
 } from 'react-icons/bs'
 export { RiMessage2Line as MessageIcon } from 'react-icons/ri'
 export { FiGithub as GithubIcon } from 'react-icons/fi'
+export { BiMap as MapIcon } from 'react-icons/bi'

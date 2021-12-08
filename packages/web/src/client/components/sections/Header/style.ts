@@ -13,11 +13,10 @@ export const HeaderContainer = styled.header`
   justify-content: center;
   gap: 0.5rem;
 
-  .drop-shadow {
+  .solid-button {
     width: 3rem;
     height: 3rem;
 
-    opacity: 0.7;
     border-radius: 15px;
 
     &:hover {

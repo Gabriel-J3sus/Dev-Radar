@@ -36,6 +36,7 @@ export const ButtonContainer = styled.button`
   }
 
   &:disabled {
-    filter: brightness(0.8);
+    cursor: not-allowed;
+    opacity: 0.8;
   }
 `
