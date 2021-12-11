@@ -5,9 +5,9 @@ import { ThemeProvider } from 'styled-components'
 import { Toaster } from 'react-hot-toast'
 
 import { AuthContextProvider } from '@contexts/AuthContext'
+import { ThemeContextProvider } from '@contexts/ThemeContext'
 
 import GlobalStyle from '@styles/global'
-import { theme } from '@styles/themes/Theme'
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
@@ -22,13 +22,20 @@ const MyApp: React.FC<AppPropsWithLayout> = ({ Component, pageProps }) => {
 
   return (
     <AuthContextProvider>
-      <ThemeProvider theme={theme}>
+      <ThemeContextProvider>
         <GlobalStyle />
 
         {getLayout(<Component {...pageProps} />)}
 
-        <Toaster />
-      </ThemeProvider>
+        <Toaster
+          toastOptions={{
+            style: {
+              backgroundColor: 'var(--bg-secondary)',
+              color: 'var(--primary)'
+            }
+          }}
+        />
+      </ThemeContextProvider>
     </AuthContextProvider>
   )
 }

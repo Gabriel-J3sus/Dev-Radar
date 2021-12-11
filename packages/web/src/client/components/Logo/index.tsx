@@ -14,7 +14,7 @@ export const Logo: React.FC<LogoProps> = ({
   size
 }) => {
   return (
-    <LogoContainer titleColor={titleColor}>
+    <LogoContainer titleColor={titleColor || 'secondary'}>
       <LogoSVG
         SVGfill={SVGfill}
         width={size}

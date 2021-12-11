@@ -12,22 +12,27 @@ export const NormalInput = styled.input`
 
     border: 2px solid transparent;
     border-radius: 20px 0 0 20px;
-    background: var(--bgForm);
+    background: var(--bg-secondary);
     transition: border-color 0.2s ease-in-out;
 
     &:focus {
-      border-color: var(--secondary);
+      border-color: var(--dark-purple);
     }
   }
 
   &.formInput {
-    border-bottom: 2px solid var(--border);
+    border-bottom: 2px solid var(--ice);
+    background: var(--bg-secondary);
     box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.02);
     transition: border-bottom-color 0.3s ease-out;
 
     &:focus {
-      border-bottom-color: var(--secondary);
+      border-bottom-color: var(--dark-purple);
     }
+  }
+
+  &::placeholder {
+    color: var(--tertiary);
   }
 `
 
@@ -48,6 +53,10 @@ export const PasswordInputContainer = styled.span`
     &:hover {
       opacity: 0.8;
     }
+  }
+
+  &::placeholder {
+    color: var(--tertiary);
   }
 `
 

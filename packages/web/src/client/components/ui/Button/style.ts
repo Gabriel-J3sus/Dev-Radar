@@ -1,17 +1,15 @@
 import styled from 'styled-components'
 
 export const ButtonContainer = styled.button`
-  width: 100%;
   min-height: 2.75rem;
-  margin-top: 0.3rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 
-  background: var(--secondary);
-  color: var(--bgForm);
+  background: var(--dark-purple);
+  color: var(--white);
   border-radius: 7px;
   border: 2px solid transparent;
   font-weight: 700;
@@ -19,16 +17,16 @@ export const ButtonContainer = styled.button`
 
   &.solid-button {
     &:hover {
-      background: var(--secondary);
-      color: var(--bgForm);
+      background: var(--purple);
+      color: var(--white);
       filter: brightness(0.8);
     }
   }
 
   &:hover {
-    background: var(--bgForm);
-    color: var(--secondary);
-    border: 2px solid var(--secondary);
+    background: var(--bg-secondary);
+    color: var(--purple);
+    border: 2px solid var(--purple);
   }
 
   &:active {

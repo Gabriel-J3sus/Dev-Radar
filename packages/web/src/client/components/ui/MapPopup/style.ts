@@ -19,7 +19,7 @@ export const MapPopupContainer = styled.div`
       strong {
         font-size: 1.25rem;
         font-family: 'Nunito', 'Roboto', sans-serif;
-        color: var(--title);
+        color: var(--secondary);
       }
 
       p {
@@ -29,7 +29,7 @@ export const MapPopupContainer = styled.div`
     }
 
     button {
-      background: var(--secondary);
+      background: var(--dark-purple);
       border-radius: 0 10px 10px 0;
       transition: opacity 0.3s;
 
@@ -50,12 +50,12 @@ export const MapPopupContainer = styled.div`
 const icon = css`
   width: 1.5rem;
   height: 1.5rem;
-  color: var(--title);
+  color: var(--secondary);
   flex-shrink: 0;
   transition: color 0.2s;
 
   &:hover {
-    color: var(--secondary);
+    color: var(--dark-purple);
   }
 `
 
@@ -69,5 +69,5 @@ export const MessageIconStyle = styled(MessageIcon)`
 export const ArrowRightIconStyle = styled(ArrowRightIcon)`
   width: 2rem;
   height: 2rem;
-  color: #fff;
+  color: var(--white);
 `

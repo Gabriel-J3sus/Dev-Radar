@@ -7,60 +7,28 @@ export const HomeContainer = styled.section`
   display: flex;
   position: relative;
 
-  .user-content {
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.6rem;
-
-    > p {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      white-space: nowrap;
-
-      color: var(--secondary);
-
-      &::before,
-      &::after {
-        content: '';
-        width: 100%;
-        height: 1px;
-        margin: 0 0.8rem;
-
-        background: var(--logo);
-      }
-    }
-  }
+  overflow-x: hidden;
 
   .leaflet-container {
-    z-index: 5;
+    z-index: 1;
+    width: 100%;
   }
 
   .logo {
     position: absolute;
     z-index: 7;
+    bottom: 0;
+    left: 0;
+    margin: 0 0 0.8rem 0.8rem;
 
     @media (max-width: 420px) {
-      top: 0;
-      right: 0;
-      margin: 0.6rem 0.4rem 0 0;
-    }
-
-    @media (min-width: 421px) {
-      bottom: 0;
-      left: 0;
-      margin: 0 0 0.8rem 0.8rem;
+      display: none;
     }
   }
 `
 
 export const CardsWrapper = styled.div<{ isSearchMode: boolean }>`
-  max-width: 320px;
+  max-width: 410px;
 
   position: absolute;
   right: 0;
@@ -68,37 +36,57 @@ export const CardsWrapper = styled.div<{ isSearchMode: boolean }>`
   margin-bottom: 3.12rem;
   z-index: 99;
 
-  display: ${({ isSearchMode }) => (isSearchMode ? 'flex' : 'none')};
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 2.25rem;
+  display: flex;
+  gap: ${({ isSearchMode }) => (isSearchMode ? '0.5rem' : '0')};
 
-  > .content {
-    width: 100%;
+  > .solid-button {
+    height: fit-content;
+    margin: auto;
 
-    overflow: auto;
+    border-radius: 7px 0 0 7px;
+
+    @media (max-width: 420px) {
+      padding: 1rem 0.5rem;
+    }
+
+    @media (min-width: 421px) {
+      padding: 2rem 1rem;
+    }
+  }
+
+  .wrapper {
+    transition: transform 0.3s, width 0.3s;
+    width: ${({ isSearchMode }) => (isSearchMode ? '100%' : '0')};
+    transform: ${({ isSearchMode }) =>
+      isSearchMode ? 'translateX(0)' : 'translateX(100vw)'};
 
     display: flex;
     flex-direction: column;
-    gap: 1.625rem;
-    padding-bottom: 1rem;
-  }
+    justify-content: flex-end;
+    gap: 2.25rem;
 
-  > span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    > .content {
+      overflow: auto;
 
-    box-shadow: -1px 3px 17px 0px #a789ff;
-    border-radius: 20px 15px 15px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.625rem;
+      padding-bottom: 1rem;
+    }
 
-    > .solid-button {
-      width: 25%;
-      height: 100%;
-      margin: 0;
-      padding: 0.8rem 0.9rem;
+    > span {
+      display: ${({ isSearchMode }) => (isSearchMode ? 'flex' : 'none')};
+      align-items: center;
+      justify-content: center;
 
-      border-radius: 0 15px 15px 0;
+      box-shadow: -1px 3px 17px 0px #a789ff;
+      border-radius: 20px 15px 15px 20px;
+
+      > .solid-button {
+        padding: 0.8rem 0.9rem;
+
+        border-radius: 0 15px 15px 0;
+      }
     }
   }
 
@@ -109,9 +97,9 @@ export const CardsWrapper = styled.div<{ isSearchMode: boolean }>`
     margin-right: auto;
     margin-left: auto;
 
-    padding: 0 1rem;
+    padding: ${({ isSearchMode }) => (isSearchMode ? '0 1rem' : '0')};
 
-    > .content {
+    > .wrapper {
       margin-top: 4rem;
     }
   }
@@ -120,7 +108,10 @@ export const CardsWrapper = styled.div<{ isSearchMode: boolean }>`
     max-height: 100vh;
 
     top: 0;
-    margin-right: 2rem;
     margin-top: 1rem;
+
+    > .wrapper {
+      margin-right: ${({ isSearchMode }) => (isSearchMode ? '2rem' : '0')};
+    }
   }
 `

@@ -29,7 +29,7 @@ const ResetPassword: NextPageWithLayout = () => {
   return (
     <>
       <Head>
-        <title>Esqueci minha senha | DevRadar</title>
+        <title>Troca de senha | DevRadar</title>
       </Head>
 
       <UserForm title="Resetar senha" handleSubmit={handleResetPassword}>

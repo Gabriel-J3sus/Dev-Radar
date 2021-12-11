@@ -6,12 +6,15 @@ import 'leaflet-defaulticon-compatibility'
 
 import { mapIcon } from '@utils/mapIcon'
 import { MapPopup } from '@components/ui'
+import { useTheme } from '@contexts/ThemeContext'
 
 interface MapProps {
   coordinates: Record<'latitude' | 'longitude', number>
 }
 
 const Map: React.FC<MapProps> = ({ coordinates }) => {
+  const { theme } = useTheme()
+
   return (
     <MapContainer
       zoom={13}
@@ -20,9 +23,9 @@ const Map: React.FC<MapProps> = ({ coordinates }) => {
       style={{ width: '100%', height: '100%' }}
     >
       <TileLayer
-        url={
-          'https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoidWJlcnNoNGRvdyIsImEiOiJja2c2eHliMmwwMjFoMnhtdXlldWxrYnU5In0.3phm7wmXOpv3Je9oSLwkfw'
-        }
+        url={`https://api.mapbox.com/styles/v1/mapbox/${
+          theme === 'dark' ? 'dark-v10' : 'light-v10'
+        }/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoidWJlcnNoNGRvdyIsImEiOiJja2c2eHliMmwwMjFoMnhtdXlldWxrYnU5In0.3phm7wmXOpv3Je9oSLwkfw`}
       />
 
       <Marker

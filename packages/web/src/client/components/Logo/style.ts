@@ -10,7 +10,7 @@ export const LogoContainer = styled.div<{ titleColor?: string }>`
 
   > h1 {
     font-family: 'Nunito', 'Roboto', sans-serif;
-    color: ${({ titleColor, ...props }) => props.theme.colors[titleColor]};
+    color: ${({ titleColor }) => `var(--${titleColor})`};
 
     @media (max-width: 600px) {
       font-size: 2.25rem;
@@ -26,6 +26,6 @@ export const LogoContainer = styled.div<{ titleColor?: string }>`
 
 export const LogoSVG = styled.svg<{ SVGfill: string }>`
   path {
-    fill: ${({ SVGfill, ...props }) => props.theme.colors[SVGfill]};
+    fill: ${({ SVGfill }) => `var(--${SVGfill})`};
   }
 `

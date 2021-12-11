@@ -15,6 +15,7 @@ export const AuthTemplateContainer = styled.article`
     > strong {
       text-align: center;
       font-size: 1.125rem;
+      color: var(--secondary);
     }
   }
 

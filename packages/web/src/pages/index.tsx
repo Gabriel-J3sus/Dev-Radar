@@ -9,10 +9,12 @@ import { Button, Card, CustomInput } from '@components/ui'
 import { HomeContainer, CardsWrapper } from '@styles/pages/home'
 import { Logo } from '@components/Logo'
 import Head from 'next/head'
+import { useTheme } from '@contexts/ThemeContext'
 
 const Home: React.FC = () => {
   const { reload } = useRouter()
-  const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const { theme } = useTheme()
+  const [isSearchActive, setIsSearchActive] = useState(false)
   const [latitude, setLatitude] = useState(0)
   const [longitude, setLongitude] = useState(0)
 
@@ -22,8 +24,11 @@ const Home: React.FC = () => {
   }
 
   const MapWithoutSSR = useMemo(
-    () => dynamic(() => import('src/client/components/Map'), { ssr: false }),
-    []
+    () =>
+      dynamic(() => import('src/client/components/Map'), {
+        ssr: false
+      }),
+    [theme]
   )
 
   useEffect(() => {
@@ -38,7 +43,7 @@ const Home: React.FC = () => {
         console.log(err)
       },
       {
-        timeout: 30000
+        timeout: 3000
       }
     )
   }, [])
@@ -48,34 +53,42 @@ const Home: React.FC = () => {
       <Head>
         <title>Mapa | DevRadar</title>
       </Head>
-      <Header search={isSearchOpen} setSearch={setIsSearchOpen} />
+      <Header search={isSearchActive} setSearch={setIsSearchActive} />
 
       <MapWithoutSSR coordinates={coordenates} />
 
-      <CardsWrapper isSearchMode={isSearchOpen}>
-        <div className="content">
-          {Array(10).fill(
-            <Card
-              avatar="https://github.com/Gabriel-J3sus.png"
-              description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum qui corporis delectus aperiam corrupti laudantium sequi eius neque iusto? Maxime in temporibus"
-              githubLink="#"
-              name="Gabriel Jesus"
-              technologies="ReactJS"
-            />
-          )}
-        </div>
+      <CardsWrapper isSearchMode={isSearchActive}>
+        <Button
+          className="solid-button"
+          onClick={() => setIsSearchActive(!isSearchActive)}
+        >
+          <SearchIcon size={24} color="var(--white)" />
+        </Button>
+        <div className="wrapper">
+          <div className="content">
+            {Array(10).fill(
+              <Card
+                avatar="https://github.com/Gabriel-J3sus.png"
+                description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorum qui corporis delectus aperiam corrupti laudantium sequi eius neque iusto? Maxime in temporibus"
+                githubLink="#"
+                name="Gabriel Jesus"
+                technologies="ReactJS"
+              />
+            )}
+          </div>
 
-        <span>
-          <CustomInput
-            customType="normal"
-            className="default"
-            type="text"
-            placeholder="Pesquisar"
-          />
-          <Button className="solid-button">
-            <SearchIcon size={24} color="#FFF" />
-          </Button>
-        </span>
+          <span>
+            <CustomInput
+              customType="normal"
+              className="default"
+              type="text"
+              placeholder="Pesquisar"
+            />
+            <Button className="solid-button">
+              <SearchIcon size={24} color="#var(--white)" />
+            </Button>
+          </span>
+        </div>
       </CardsWrapper>
 
       <div className="logo" onClick={reload}>

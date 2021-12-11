@@ -1,4 +1,5 @@
 import { createGlobalStyle, css } from 'styled-components'
+import { theme as colors } from './themes/Theme'
 
 export default createGlobalStyle`
   :root {
@@ -16,12 +17,13 @@ export default createGlobalStyle`
   }
 
   body {
-    background: var(--bg);
+
+    background: var(--bg-primary);
   }
 
   body, input, button, textarea, .leaflet-container {
     font: 400 1rem 'Roboto', sans-serif;
-    color: ${props => props.theme.colors.primary};
+    color: var(--primary);
   }
 
   a, button {
@@ -41,7 +43,7 @@ export default createGlobalStyle`
   }
 
   &::-webkit-scrollbar-thumb {
-    background: ${props => props.theme.colors.logo};
+    background: #8257E5;
     border-radius: 25px;
   }
 
@@ -56,9 +58,13 @@ export default createGlobalStyle`
     }
   }
 
+  .leaflet-popup-content-wrapper, .leaflet-popup-tip {
+    background: var(--bg-secondary);
+  }
+
   .leaflet-marker-icon {
     border-radius: 50%;
-    box-shadow: 0 0 20px 1px var(--secondary);
+    box-shadow: 0 0 20px 1px var(--purple);
   }
 
   .leaflet-popup-content p {

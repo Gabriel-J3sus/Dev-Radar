@@ -6,8 +6,8 @@ export const CardContainer = styled.div`
   gap: 0.625rem;
 
   padding: 1.25rem;
-  background: var(--bgForm);
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  background: var(--bg-secondary);
+  filter: drop-shadow(0px 4px 4px var(--card-shadow));
   border-radius: 10px;
   transition: transform 0.3s;
 
@@ -28,7 +28,7 @@ export const CardContainer = styled.div`
 
       strong {
         font-family: 'Nunito', 'Roboto', sans-serif;
-        color: var(--title);
+        color: var(--secondary);
       }
 
       p {
@@ -48,7 +48,7 @@ export const CardContainer = styled.div`
   }
 
   a {
-    color: var(--secondary);
+    color: var(--link);
     transition: opacity 0.2s;
 
     &:hover {
